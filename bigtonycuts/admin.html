@@ -3,436 +3,424 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="BigTonyCuts — Where Culture Meets Class. Premium Nigerian Menswear. Port Harcourt, Nigeria."/>
-<title>BigTonyCuts — Where Culture Meets Class</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>BigTonyCuts — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bd:#2C1810;--bm:#4A2C1A;--bl:#6B3F28;--gold:#C9A84C;--gl:#E8C875;--gp:#F5E6B8;--cr:#F8F2E6;--cd:#EDE4D0;--ow:#FDFAF5}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;background:var(--ow);color:var(--bd);overflow-x:hidden}
-.loader{position:fixed;inset:0;background:var(--bd);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 0.6s ease}
-.loader.hide{opacity:0;pointer-events:none}
-.loader .logo-btc{font-family:'Playfair Display',serif;font-size:52px;font-weight:800;color:var(--gold);letter-spacing:6px;text-align:center}
-.loader .logo-sub{font-size:9px;color:var(--gp);letter-spacing:6px;text-transform:uppercase;text-align:center;margin-top:2px;font-family:'Montserrat',sans-serif}
-.loader-line{width:0;height:1px;background:var(--gold);animation:ll 1.4s ease forwards}
-@keyframes ll{to{width:80px}}
-.tagline-bar{background:var(--gold);padding:11px 24px;text-align:center}
-.tagline-bar p{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--bd);letter-spacing:1px;font-style:italic}
-.announce-bar{background:var(--bd);padding:9px 0;overflow:hidden}
-.announce-track{display:flex;width:max-content;animation:marquee 35s linear infinite}
-.announce-text{color:var(--gl);font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;padding:0 48px;white-space:nowrap;font-family:'Montserrat',sans-serif}
-.announce-text .sep{color:var(--gold);margin:0 14px;opacity:0.5}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-nav{background:var(--bd);position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(201,168,76,0.12)}
-.nav-main{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1400px;margin:0 auto}
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:4px;background:none;border:none}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--gp);transition:all 0.3s}
-.btc-logo{text-align:center;text-decoration:none;display:block}
-.btc-logo .logo-btc{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--gold);letter-spacing:5px;line-height:1}
-.btc-logo .logo-sub{font-size:8px;font-weight:400;color:rgba(255,255,255,0.35);letter-spacing:5px;text-transform:uppercase;margin-top:3px;font-family:'Montserrat',sans-serif}
-.nav-wa-btn{background:transparent;border:1px solid var(--gold);color:var(--gl);padding:10px 18px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px;text-decoration:none;transition:all 0.3s;white-space:nowrap}
-.nav-wa-btn:hover{background:var(--gold);color:var(--bd)}
-.nav-wa-btn svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
-.cat-nav{background:var(--cr);border-bottom:1px solid var(--cd);overflow-x:auto;scrollbar-width:none}
-.cat-nav::-webkit-scrollbar{display:none}
-.cat-nav-inner{display:flex;align-items:center;max-width:1400px;margin:0 auto;padding:0 28px}
-.cat-nav a{color:var(--bl);font-size:10px;font-weight:600;font-family:'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;padding:15px 18px;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
-.cat-nav a:hover{color:var(--bd);border-bottom-color:var(--gold)}
-.mobile-menu{display:none;position:fixed;inset:0;background:var(--bd);z-index:200;padding:36px 28px;flex-direction:column;overflow-y:auto}
-.mobile-menu.open{display:flex}
-.mob-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-.mob-close{color:var(--gold);font-size:22px;cursor:pointer;background:none;border:none}
-.mobile-menu a{color:rgba(255,255,255,0.65);font-size:12px;font-family:'Montserrat',sans-serif;font-weight:600;letter-spacing:3px;text-decoration:none;padding:15px 0;border-bottom:1px solid rgba(201,168,76,0.08);text-transform:uppercase;transition:color 0.2s}
-.mobile-menu a:hover{color:var(--gold)}
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;background:var(--bd)}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.slide.active{opacity:1}
-.slide-bg{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-.slide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(44,24,16,0.88) 0%,rgba(44,24,16,0.5) 60%,rgba(44,24,16,0.15) 100%)}
-.slide-content{position:absolute;top:50%;transform:translateY(-50%);left:7%;max-width:540px}
-.slide-label{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;margin-bottom:18px;font-family:'Montserrat',sans-serif}
-.slide-title{color:#fff;font-size:clamp(42px,7vw,80px);font-family:'Playfair Display',serif;font-weight:700;line-height:1.08;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
-.slide-title em{color:var(--gl);font-style:italic;display:block}
-.slide-sub{color:rgba(255,255,255,0.8);font-size:15px;font-family:'Cormorant Garamond',serif;letter-spacing:2px;margin-bottom:36px;font-style:italic}
-.slide-btn{display:inline-block;border:1px solid var(--gold);color:#fff;padding:14px 34px;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;text-decoration:none;font-family:'Montserrat',sans-serif;transition:all 0.3s;background:rgba(201,168,76,0.1)}
-.slide-btn:hover{background:var(--gold);color:var(--bd)}
-.slide-dots{position:absolute;bottom:36px;left:7%;display:flex;gap:10px;align-items:center}
-.dot{width:20px;height:1px;background:rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s}
-.dot.active{width:40px;background:var(--gold)}
-.hero-empty{display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:12px}
-.hero-empty p{color:rgba(255,255,255,0.3);font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase}
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
-.section{padding:80px 28px}
-.section-cream{background:var(--cr)}
-.section-white{background:var(--ow)}
-.container{max-width:1200px;margin:0 auto}
-.sec-eye{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:10px;display:block}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--bd);line-height:1.15;margin-bottom:8px}
-.sec-title em{color:var(--gold);font-style:italic}
-.sec-title-white{color:#fff}
-.sec-sub{color:var(--bl);font-family:'Cormorant Garamond',serif;font-size:19px;letter-spacing:1px;line-height:1.6}
-.find-header{text-align:center;margin-bottom:48px}
-.cat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-@media(max-width:900px){.cat-tiles{grid-template-columns:repeat(2,1fr)}}
-.cat-tile{position:relative;overflow:hidden;aspect-ratio:2/3;background:var(--bm);text-decoration:none;display:block}
-.cat-tile img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.8s ease;display:block}
-.cat-tile:hover img{transform:scale(1.06)}
-.cat-tile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,0.92) 0%,rgba(44,24,16,0.15) 55%,transparent 100%)}
-.cat-tile-info{position:absolute;bottom:0;left:0;right:0;padding:24px 18px}
-.cat-tile-name{color:#fff;font-size:11px;font-weight:600;font-family:'Montserrat',sans-serif;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:7px;text-shadow:0 1px 4px rgba(0,0,0,0.5)}
-.cat-tile-line{width:20px;height:1px;background:var(--gold);transition:width 0.3s}
-.cat-tile:hover .cat-tile-line{width:36px}
-.cat-tile-empty{display:flex;align-items:center;justify-content:center;aspect-ratio:2/3;background:var(--bm)}
-.cat-tile-empty span{color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:2px;font-family:'Montserrat',sans-serif;text-transform:uppercase;text-align:center;padding:8px}
-.cat-section{padding:72px 28px;border-top:1px solid var(--cd)}
-.cat-section:nth-child(even){background:var(--cr)}
-.cat-section:nth-child(odd){background:var(--ow)}
-.cat-head{max-width:1200px;margin:0 auto 44px;border-bottom:1px solid var(--cd);padding-bottom:20px}
-.cat-head .eyebrow{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:6px;display:block}
-.cat-head h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;color:var(--bd);line-height:1.1}
-.cat-head h2 em{color:var(--gold);font-style:italic}
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1200px;margin:0 auto}
-@media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
-.product-card{cursor:pointer;text-decoration:none;display:block}
-.product-img-wrap{aspect-ratio:3/4;overflow:hidden;background:var(--cd);position:relative;margin-bottom:12px}
-.product-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.7s ease;display:block}
-.product-card:hover .product-img-wrap img{transform:scale(1.05)}
-.new-tag{position:absolute;top:10px;left:10px;background:var(--bd);color:var(--gold);font-size:9px;font-weight:600;letter-spacing:2px;padding:3px 8px;font-family:'Montserrat',sans-serif;text-transform:uppercase}
-.product-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--bd);display:block;margin-bottom:3px}
-.product-note{font-size:10px;color:var(--bl);font-family:'Montserrat',sans-serif;letter-spacing:1px}
-.empty-cat{grid-column:1/-1;text-align:center;padding:60px 24px;border:1px dashed var(--cd)}
-.empty-cat p{color:var(--bl);font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;margin-bottom:8px}
-.empty-cat span{color:var(--gold);font-size:11px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase}
-.cultural{padding:88px 28px;background:var(--bd);position:relative;overflow:hidden}
-.cultural::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 50px,rgba(201,168,76,0.02) 50px,rgba(201,168,76,0.02) 100px)}
-.cultural-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
-@media(max-width:768px){.cultural-inner{grid-template-columns:1fr;gap:40px}}
-.cultural-text .eyebrow{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:18px;display:block}
-.cultural-text h2{font-family:'Playfair Display',serif;font-size:clamp(38px,6vw,66px);font-weight:700;color:#fff;line-height:1.08;margin-bottom:14px}
-.cultural-text h2 em{color:var(--gl);font-style:italic;display:block}
-.cultural-text p{color:rgba(255,255,255,0.7);font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.75;margin-bottom:32px;font-style:italic}
-.cultural-imgs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cultural-imgs img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center top;display:block}
-.cultural-img-empty{aspect-ratio:2/3;background:var(--bm);display:flex;align-items:center;justify-content:center}
-.cultural-img-empty span{color:rgba(255,255,255,0.15);font-size:10px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:8px}
-.about{padding:88px 28px;background:var(--ow)}
-.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-@media(max-width:768px){.about-inner{grid-template-columns:1fr;gap:40px}}
-.about-text .eyebrow{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:18px;display:block}
-.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--bd);line-height:1.2;margin-bottom:20px}
-.about-text p{color:var(--bl);font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.85;margin-bottom:14px}
-.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.pillar{background:var(--cr);border:1px solid var(--cd);padding:18px 16px}
-.pillar-icon{font-size:20px;margin-bottom:8px;display:block}
-.pillar-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--bd);margin-bottom:4px}
-.pillar-desc{color:var(--bl);font-size:11px;font-family:'Montserrat',sans-serif;line-height:1.5}
-.about-img img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
-.about-img-empty{aspect-ratio:3/4;background:var(--cd);display:flex;align-items:center;justify-content:center}
-.about-img-empty span{color:var(--bl);font-size:11px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase}
-.features{background:var(--cr);padding:52px 28px;border-top:1px solid var(--cd);border-bottom:1px solid var(--cd)}
-.features-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:center}
-@media(max-width:600px){.features-inner{grid-template-columns:1fr;gap:24px}}
-.feat-icon{font-size:24px;margin-bottom:12px}
-.feat-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--bd);margin-bottom:6px}
-.feat-desc{color:var(--bl);font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.6}
-.testimonials{padding:80px 28px;background:var(--bd)}
-.testi-top{text-align:center;margin-bottom:52px}
-.testi-rating{color:var(--gold);font-size:18px;letter-spacing:4px;margin-top:10px}
-.testi-verified{color:rgba(255,255,255,0.35);font-size:10px;font-family:'Montserrat',sans-serif;letter-spacing:2px;margin-top:5px}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto}
-@media(max-width:768px){.testi-grid{grid-template-columns:1fr;max-width:480px}}
-.testi-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);padding:36px 28px;position:relative}
-.testi-q{font-family:'Playfair Display',serif;font-size:64px;color:var(--gold);opacity:0.2;position:absolute;top:12px;left:20px;line-height:1}
-.testi-text{color:rgba(255,255,255,0.78);font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.75;margin-bottom:22px;position:relative;z-index:1;font-style:italic}
-.testi-author{color:var(--gl);font-size:10px;font-weight:600;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase}
-.testi-loc{color:rgba(255,255,255,0.28);font-size:10px;font-family:'Montserrat',sans-serif;margin-top:2px;letter-spacing:1px}
-.newsletter{padding:72px 28px;background:var(--bm);position:relative;overflow:hidden}
-.newsletter::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,168,76,0.03) 40px,rgba(201,168,76,0.03) 80px)}
-.nl-inner{max-width:500px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.nl-inner h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);color:#fff;margin-bottom:8px}
-.nl-inner p{color:rgba(255,255,255,0.5);font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:32px;font-style:italic}
-.nl-form{display:flex;border:1px solid rgba(201,168,76,0.35);overflow:hidden;max-width:400px;margin:0 auto}
-.nl-form input{flex:1;background:transparent;border:none;padding:14px 18px;color:#fff;font-size:13px;font-family:'Montserrat',sans-serif;outline:none}
-.nl-form input::placeholder{color:rgba(255,255,255,0.28)}
-.nl-form button{background:var(--gold);border:none;padding:14px 20px;cursor:pointer;color:var(--bd);font-size:16px;font-weight:700;transition:background 0.2s}
-.nl-form button:hover{background:var(--gl)}
-footer{background:var(--bd);padding:60px 28px 24px;border-top:1px solid rgba(201,168,76,0.12)}
-.footer-inner{max-width:1100px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid rgba(201,168,76,0.08)}
-@media(max-width:700px){.footer-top{grid-template-columns:1fr 1fr}}
-.footer-brand .logo-btc{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:var(--gold);letter-spacing:4px}
-.footer-brand .logo-sub{font-size:8px;color:rgba(255,255,255,0.25);letter-spacing:5px;text-transform:uppercase;margin-top:2px;font-family:'Montserrat',sans-serif}
-.footer-tagline{color:rgba(255,255,255,0.4);font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;margin:14px 0 22px;line-height:1.6}
-.footer-wa{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,0.25);color:var(--gl);padding:11px 18px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;text-decoration:none;transition:all 0.3s}
-.footer-wa:hover{background:var(--gold);color:var(--bd);border-color:var(--gold)}
-.footer-wa svg{width:14px;height:14px;fill:currentColor}
-.footer-col h4{color:var(--gp);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:18px}
-.footer-col a{display:block;color:rgba(255,255,255,0.35);font-size:12px;font-family:'Montserrat',sans-serif;text-decoration:none;margin-bottom:11px;transition:color 0.2s}
-.footer-col a:hover{color:var(--gold)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:8px}
-.footer-bottom p{color:rgba(255,255,255,0.18);font-size:11px;font-family:'Montserrat',sans-serif;letter-spacing:1px}
-.float-wa{position:fixed;bottom:30px;right:26px;z-index:500;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.35);text-decoration:none;animation:waPulse 3s infinite}
-.float-wa svg{width:26px;height:26px;fill:white}
-@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.45)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-.back-top{position:fixed;bottom:96px;right:28px;z-index:400;width:38px;height:38px;background:var(--bd);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 0.3s;color:var(--gold);font-size:14px;text-decoration:none}
-.back-top.show{opacity:1}
-.back-top:hover{background:var(--gold);color:var(--bd)}
-@media(max-width:768px){
-  .nav-main,.cat-section,.about,.cultural,.testimonials,.newsletter,.section{padding-left:18px;padding-right:18px}
-  .tagline-bar p{font-size:12px}
-  .features{padding:44px 18px}
-  footer{padding:48px 18px 22px}
-  .footer-top{gap:28px}
-}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Montserrat',sans-serif;background:var(--ow);min-height:100vh}
+.lp{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:20px}
+.lp-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1617922001439-4a2e6562f328?w=1920&h=1080&fit=crop&auto=format') center/cover}
+.lp-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,24,16,0.94),rgba(74,44,26,0.88))}
+.lp-card{position:relative;z-index:1;background:rgba(253,250,245,0.97);padding:52px 44px;max-width:400px;width:100%}
+.lp-logo{text-align:center;margin-bottom:24px}
+.logo-btc{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:var(--gold);letter-spacing:5px}
+.logo-sub{font-size:8px;color:var(--bl);letter-spacing:6px;text-transform:uppercase;margin-top:3px;font-family:'Montserrat',sans-serif}
+.lp-badge{text-align:center;color:var(--bl);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--cd)}
+.field label{display:block;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--bl);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--cd);background:white;padding:12px 15px;font-size:14px;font-family:'Montserrat',sans-serif;outline:none;color:var(--bd);margin-bottom:14px}
+.field input:focus{border-color:var(--gold)}
+.lp-btn{width:100%;background:var(--bd);color:var(--gl);border:none;padding:14px;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:pointer;margin-top:6px;transition:background 0.2s}
+.lp-btn:hover{background:var(--bm)}
+.lp-err{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;font-size:12px;margin-bottom:14px;display:none;text-align:center}
+.db{display:none;min-height:100vh}
+.sb{width:210px;background:var(--bd);position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column;overflow-y:auto}
+.sb-logo{padding:22px 18px;border-bottom:1px solid rgba(201,168,76,0.1)}
+.sb-badge{padding:9px 18px;color:rgba(255,255,255,0.22);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,0.06)}
+.sb-section{padding:10px 0}
+.sb-stitle{padding:8px 18px 4px;color:rgba(255,255,255,0.2);font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.sb-btn{display:flex;align-items:center;gap:9px;padding:10px 18px;color:rgba(255,255,255,0.45);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;background:none;border:none;cursor:pointer;width:100%;transition:all 0.2s;border-left:2px solid transparent}
+.sb-btn:hover,.sb-btn.active{color:var(--gl);background:rgba(201,168,76,0.07);border-left-color:var(--gold)}
+.sb-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0.3;flex-shrink:0;transition:opacity 0.2s}
+.sb-btn:hover .sb-dot,.sb-btn.active .sb-dot{opacity:1}
+.sb-foot{padding:12px 18px;border-top:1px solid rgba(201,168,76,0.1);margin-top:auto}
+.sb-link{display:flex;align-items:center;gap:6px;color:var(--gold);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;text-decoration:none;margin-bottom:10px}
+.sb-out{color:rgba(255,255,255,0.28);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;background:none;border:none;cursor:pointer;padding:0}
+.sb-out:hover{color:rgba(255,255,255,0.6)}
+.main{margin-left:210px;min-height:100vh}
+.topbar{background:white;padding:16px 32px;border-bottom:1px solid var(--cd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar h1{font-family:'Playfair Display',serif;font-size:19px;color:var(--bd)}
+.welcome{color:var(--bl);font-size:11px}.welcome span{color:var(--gold);font-weight:600}
+.content{padding:32px}
+.saving-bar{background:#fff3cd;border:1px solid #ffc107;padding:10px 16px;font-size:12px;color:#856404;font-family:'Montserrat',sans-serif;margin-bottom:16px;display:none;border-radius:2px}
+.saving-bar.show{display:block}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.ov-card{background:white;border:1px solid var(--cd);padding:20px;text-align:center;cursor:pointer;transition:border-color 0.2s}
+.ov-card:hover{border-color:var(--gold)}
+.ov-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--bd)}
+.ov-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bl);margin-top:3px;font-family:'Montserrat',sans-serif}
+.ov-line{width:18px;height:1px;background:var(--gold);margin:8px auto 0}
+.panel{background:white;border:1px solid var(--cd);margin-bottom:24px}
+.panel-head{padding:16px 22px;border-bottom:1px solid var(--cd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.panel-title{font-family:'Playfair Display',serif;font-size:16px;color:var(--bd)}
+.panel-desc{color:var(--bl);font-size:10px;font-family:'Montserrat',sans-serif;margin-top:2px}
+.item-badge{background:var(--cr);color:var(--bl);font-size:9px;font-weight:600;letter-spacing:1px;padding:3px 9px;font-family:'Montserrat',sans-serif;white-space:nowrap}
+.panel-body{padding:22px}
+.urow{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:flex-end}
+.ninp{flex:1;min-width:160px;border:1px solid var(--cd);padding:11px 13px;font-size:13px;font-family:'Montserrat',sans-serif;color:var(--bd);outline:none}
+.ninp:focus{border-color:var(--gold)}
+.ninp-sm{width:100%;border:1px solid var(--cd);padding:9px 12px;font-size:12px;font-family:'Montserrat',sans-serif;color:var(--bd);outline:none;margin-bottom:8px}
+.ninp-sm:focus{border-color:var(--gold)}
+.farea{position:relative;border:1.5px dashed rgba(201,168,76,0.45);padding:12px 16px;cursor:pointer;background:var(--ow);transition:background 0.2s;min-width:130px;text-align:center;display:flex;align-items:center;justify-content:center}
+.farea:hover{background:var(--cr)}
+.farea input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.ftext{font-size:10px;color:var(--bl);pointer-events:none}
+.ftext strong{display:block;color:var(--gold);font-size:11px;margin-bottom:1px}
+.abtn{background:var(--bd);color:var(--gl);border:none;padding:11px 18px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.abtn:hover:not(:disabled){background:var(--bm)}
+.abtn:disabled{opacity:0.35;cursor:not-allowed}
+.prev-row{display:none;align-items:center;gap:10px;padding:9px 12px;background:var(--cr);margin-bottom:12px;border:1px solid var(--cd)}
+.prev-row img{width:40px;height:52px;object-fit:cover}
+.prev-info{font-size:11px;color:var(--bl)}.prev-info strong{display:block;color:var(--bd);font-size:12px;margin-bottom:1px}
+.uling{display:none;align-items:center;gap:10px;padding:9px 12px;background:#f0fdf4;border:1px solid #bbf7d0;margin-bottom:12px}
+.uling span{font-size:11px;color:#16a34a;font-family:'Montserrat',sans-serif}
+.prog{flex:1;height:2px;background:#dcfce7}.prog-f{height:100%;background:#16a34a;animation:pf 1.4s ease-in-out infinite}
+@keyframes pf{0%{width:0}50%{width:60%}100%{width:100%}}
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.ig-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.ii img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.i2 img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.iname{font-size:10px;color:var(--bl);padding:5px 2px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Montserrat',sans-serif}
+.iacts{display:flex;gap:3px}
+.rbtn{flex:1;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:4px;font-size:9px;font-weight:600;letter-spacing:1px;font-family:'Montserrat',sans-serif;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.rbtn:hover{background:#dc2626;color:white}
+.nbtn{flex:1;background:var(--cr);border:1px solid var(--cd);color:var(--bl);padding:4px;font-size:9px;font-weight:600;letter-spacing:1px;font-family:'Montserrat',sans-serif;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.nbtn.on{background:var(--gold);color:var(--bd);border-color:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;padding:36px;color:var(--bl);font-size:11px;font-family:'Montserrat',sans-serif;border:1px dashed var(--cd);letter-spacing:1px}
+.hero-empty-box{aspect-ratio:16/9;background:var(--cd);display:flex;align-items:center;justify-content:center;grid-column:1/-1}
+.hero-empty-box span{color:var(--bl);font-size:10px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase}
+.toast{position:fixed;bottom:22px;right:22px;background:var(--bd);color:var(--gl);padding:11px 18px;font-size:11px;font-family:'Montserrat',sans-serif;letter-spacing:1px;z-index:500;transform:translateY(70px);opacity:0;transition:all 0.3s;border-left:3px solid var(--gold)}
+.toast.show{transform:translateY(0);opacity:1}
+.hero-form{background:var(--cr);border:1px solid var(--cd);padding:16px;margin-bottom:16px}
+.hero-form-title{font-family:'Playfair Display',serif;font-size:14px;color:var(--bd);margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.sb{display:none}.main{margin-left:0}.content{padding:16px}.ov-grid{grid-template-columns:repeat(2,1fr)}.urow{flex-direction:column}.ig{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-<div class="loader" id="loader">
-  <div class="logo-btc">BTC</div>
-  <div class="logo-sub">BigTonyCuts</div>
-  <div class="loader-line"></div>
-</div>
-<div class="tagline-bar"><p>Tell us what you need. We bring it to life.</p></div>
-<div class="announce-bar">
-  <div class="announce-track">
-    <span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
-    <span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
+<div class="lp" id="lp">
+  <div class="lp-bg"></div><div class="lp-ov"></div>
+  <div class="lp-card">
+    <div class="lp-logo"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div></div>
+    <div class="lp-badge">Admin Dashboard</div>
+    <div class="lp-err" id="lerr">Invalid credentials. Please try again.</div>
+    <div class="field"><label>Username</label><input type="text" id="un" autocomplete="off"/></div>
+    <div class="field"><label>Password</label><input type="password" id="pw"/></div>
+    <button class="lp-btn" onclick="login()">Enter Dashboard</button>
   </div>
 </div>
-<nav>
-  <div class="nav-main">
-    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-    <a href="#" class="btc-logo"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div></a>
-    <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="nav-wa-btn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Order Now
-    </a>
+<div class="db" id="db">
+  <div class="sb">
+    <div class="sb-logo"><div class="logo-btc" style="font-size:20px">BTC</div><div class="logo-sub">BigTonyCuts</div></div>
+    <div class="sb-badge">Catalogue Manager</div>
+    <div class="sb-section">
+      <div class="sb-stitle">Main Interface</div>
+      <button class="sb-btn active" onclick="show('overview')" id="nb-overview"><span class="sb-dot"></span>Overview</button>
+      <button class="sb-btn" onclick="show('hero')" id="nb-hero"><span class="sb-dot"></span>Hero Slides</button>
+      <button class="sb-btn" onclick="show('tiles')" id="nb-tiles"><span class="sb-dot"></span>Category Tiles</button>
+      <button class="sb-btn" onclick="show('cultural')" id="nb-cultural"><span class="sb-dot"></span>Cultural Edit</button>
+      <button class="sb-btn" onclick="show('about')" id="nb-about"><span class="sb-dot"></span>About Image</button>
+    </div>
+    <div class="sb-section">
+      <div class="sb-stitle">Catalogue</div>
+      <button class="sb-btn" onclick="show('suits')" id="nb-suits"><span class="sb-dot"></span>Suits</button>
+      <button class="sb-btn" onclick="show('agbada')" id="nb-agbada"><span class="sb-dot"></span>Agbada</button>
+      <button class="sb-btn" onclick="show('senator')" id="nb-senator"><span class="sb-dot"></span>Senator</button>
+      <button class="sb-btn" onclick="show('dashiki')" id="nb-dashiki"><span class="sb-dot"></span>Dashiki</button>
+      <button class="sb-btn" onclick="show('kaftan')" id="nb-kaftan"><span class="sb-dot"></span>Kaftan</button>
+      <button class="sb-btn" onclick="show('etibo')" id="nb-etibo"><span class="sb-dot"></span>Etibo</button>
+      <button class="sb-btn" onclick="show('button-shirts')" id="nb-button-shirts"><span class="sb-dot"></span>Button Shirts</button>
+    </div>
+    <div class="sb-foot">
+      <a href="index.html" target="_blank" class="sb-link">↗ View Live Site</a>
+      <button class="sb-out" onclick="logout()">← Sign Out</button>
+    </div>
   </div>
-  <div class="cat-nav"><div class="cat-nav-inner">
-    <a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a>
-    <a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a>
-    <a href="#button-shirts">Button Shirts</a>
-  </div></div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mob-top">
-    <div class="logo-btc" style="font-size:22px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:800;letter-spacing:4px">BTC</div>
-    <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <div class="main">
+    <div class="topbar">
+      <h1 id="ptitle">Overview</h1>
+      <div class="welcome">Welcome back, <span>Tony 👑</span></div>
+    </div>
+    <div class="content">
+      <div class="saving-bar" id="savingBar">💾 Saving changes... please wait</div>
+      <div id="p-overview"></div>
+      <div id="p-hero" style="display:none"></div>
+      <div id="p-tiles" style="display:none"></div>
+      <div id="p-cultural" style="display:none"></div>
+      <div id="p-about" style="display:none"></div>
+      <div id="p-suits" style="display:none"></div>
+      <div id="p-agbada" style="display:none"></div>
+      <div id="p-senator" style="display:none"></div>
+      <div id="p-dashiki" style="display:none"></div>
+      <div id="p-kaftan" style="display:none"></div>
+      <div id="p-etibo" style="display:none"></div>
+      <div id="p-button-shirts" style="display:none"></div>
+    </div>
   </div>
-  <a href="#suits" onclick="toggleMenu()">Suits</a>
-  <a href="#agbada" onclick="toggleMenu()">Agbada</a>
-  <a href="#senator" onclick="toggleMenu()">Senator</a>
-  <a href="#dashiki" onclick="toggleMenu()">Dashiki</a>
-  <a href="#kaftan" onclick="toggleMenu()">Kaftan</a>
-  <a href="#etibo" onclick="toggleMenu()">Etibo</a>
-  <a href="#button-shirts" onclick="toggleMenu()">Button Shirts</a>
-  <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" onclick="toggleMenu()" style="color:var(--gold);margin-top:14px">Order on WhatsApp →</a>
 </div>
-<section class="hero" id="hero"><div id="heroSlides"></div><div class="slide-dots" id="heroDots"></div></section>
-<section class="section section-white fade-in" id="catalogue">
-  <div class="container">
-    <div class="find-header">
-      <span class="sec-eye">Shop by Category</span>
-      <h2 class="sec-title">Find The Perfect <em>Piece</em></h2>
-      <p class="sec-sub" style="margin-top:6px;text-align:center">Every occasion. Every style. Crafted for the African king.</p>
-    </div>
-  </div>
-  <div class="cat-tiles" id="catTiles"></div>
-</section>
-<section class="cat-section fade-in" id="suits"><div class="cat-head"><span class="eyebrow">The Power Collection</span><h2>Suits &amp; <em>Power Wear</em></h2></div><div class="product-grid" id="suits-grid"></div></section>
-<section class="cat-section fade-in" id="agbada"><div class="cat-head"><span class="eyebrow">Royal Heritage</span><h2>Agbada <em>Collection</em></h2></div><div class="product-grid" id="agbada-grid"></div></section>
-<section class="cultural fade-in">
-  <div class="cultural-inner">
-    <div class="cultural-text">
-      <span class="eyebrow">The Cultural Edit</span>
-      <h2>Agbada.<br><em>Redefined.</em></h2>
-      <p>Nigerian heritage. Modern elegance. Unapologetically you. For the king who knows where he comes from.</p>
-      <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20the%20Cultural%20Edit." target="_blank" class="slide-btn" style="display:inline-block">Enquire Now</a>
-    </div>
-    <div class="cultural-imgs" id="culturalImgs"></div>
-  </div>
-</section>
-<section class="cat-section fade-in" id="senator"><div class="cat-head"><span class="eyebrow">The Statesman Collection</span><h2>Senator <em>Styles</em></h2></div><div class="product-grid" id="senator-grid"></div></section>
-<section class="cat-section fade-in" id="dashiki"><div class="cat-head"><span class="eyebrow">Bold Cultural Prints</span><h2>Dashiki <em>Collection</em></h2></div><div class="product-grid" id="dashiki-grid"></div></section>
-<section class="cat-section fade-in" id="kaftan"><div class="cat-head"><span class="eyebrow">Elegant Flowing Styles</span><h2>Kaftan <em>Collection</em></h2></div><div class="product-grid" id="kaftan-grid"></div></section>
-<section class="cat-section fade-in" id="etibo"><div class="cat-head"><span class="eyebrow">Rivers State Heritage</span><h2>Etibo <em>Collection</em></h2></div><div class="product-grid" id="etibo-grid"></div></section>
-<section class="cat-section fade-in" id="button-shirts"><div class="cat-head"><span class="eyebrow">Nigerian Print &amp; Pattern</span><h2>Button <em>Shirts</em></h2></div><div class="product-grid" id="button-shirts-grid"></div></section>
-<section class="about fade-in">
-  <div class="about-inner">
-    <div class="about-text">
-      <span class="eyebrow">About BigTonyCuts</span>
-      <h2>Crafted For You.<br>Delivered With Excellence.</h2>
-      <p>At BigTonyCuts, you are in control. Tell us exactly what you want — whether it's a grand Agbada for your ceremony, a sharp Senator for the boardroom, or a bold Dashiki for the culture — and our expert designers bring your vision to life.</p>
-      <p>We don't just make clothes. We craft experiences. Every piece is made with precision, delivered on time, and finished to the highest standard — because a king deserves nothing less.</p>
-      <div class="pillars">
-        <div class="pillar"><span class="pillar-icon">⏱️</span><div class="pillar-title">Perfect Timing</div><p class="pillar-desc">Your outfit ready when you need it — no delays, no excuses</p></div>
-        <div class="pillar"><span class="pillar-icon">✦</span><div class="pillar-title">Unmatched Quality</div><p class="pillar-desc">Premium fabrics, expert craftsmanship, royal finish</p></div>
-        <div class="pillar"><span class="pillar-icon">⚡</span><div class="pillar-title">Fast Turnaround</div><p class="pillar-desc">Quick production without ever compromising excellence</p></div>
-        <div class="pillar"><span class="pillar-icon">🚚</span><div class="pillar-title">Smooth Delivery</div><p class="pillar-desc">Safe, fast delivery to your door across Nigeria</p></div>
-      </div>
-    </div>
-    <div class="about-img" id="aboutImg"></div>
-  </div>
-</section>
-<section class="features fade-in">
-  <div class="features-inner">
-    <div><div class="feat-icon">🚚</div><div class="feat-title">Nationwide Shipping</div><p class="feat-desc">24–48hrs locally in Port Harcourt. Fast delivery nationwide across Nigeria.</p></div>
-    <div><div class="feat-icon">✦</div><div class="feat-title">Premium Quality</div><p class="feat-desc">Crafted with care, culture and the finest Nigerian fabrics. Every piece is royal.</p></div>
-    <div><div class="feat-icon">🔄</div><div class="feat-title">Easy Returns</div><p class="feat-desc">Stress-free exchange within 5 days of receiving your order.</p></div>
-  </div>
-</section>
-<section class="testimonials fade-in">
-  <div class="testi-top">
-    <span class="sec-eye" style="display:block;margin-bottom:10px">Customer Reviews</span>
-    <h2 class="sec-title sec-title-white" style="text-align:center">Customers Are Saying</h2>
-    <div class="testi-rating">★★★★★</div>
-    <div class="testi-verified">✓ Verified Reviews — 5.0 Rating</div>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"BigTonyCuts delivered exactly what I wanted for my wedding. The Agbada was absolutely stunning — every guest was asking where I got it. Will definitely order again!"</p><div class="testi-author">Chukwuemeka O.</div><div class="testi-loc">Lagos, Nigeria</div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Ordered a Senator style for my dad's birthday. The quality was exceptional. Fast delivery to Abuja and the packaging was premium. BigTonyCuts is the real deal!"</p><div class="testi-author">Babatunde A.</div><div class="testi-loc">Abuja, Nigeria</div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Finding authentic Nigerian menswear was always a challenge. BigTonyCuts ships nationwide and their Kaftan collection is unmatched. Truly regal craftsmanship!"</p><div class="testi-author">Ibrahim M.</div><div class="testi-loc">Kano, Nigeria</div></div>
-  </div>
-</section>
-<section class="newsletter fade-in">
-  <div class="nl-inner">
-    <span class="sec-eye" style="display:block;margin-bottom:10px">Stay Connected</span>
-    <h2>Join The Royal Circle</h2>
-    <p>Be first to see new collections and exclusive drops.</p>
-    <div class="nl-form"><input type="email" placeholder="Enter your email address"/><button>→</button></div>
-  </div>
-</section>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div>
-        <p class="footer-tagline">"Where Culture Meets Class.<br>Dressed Like Royalty."</p>
-        <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="footer-wa">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Order on WhatsApp
-        </a>
-      </div>
-      <div class="footer-col"><h4>Information</h4><a href="#">Contact Us</a><a href="#">Shipping Policy</a><a href="#">Refund &amp; Return</a><a href="#">Terms of Service</a><a href="#">About Us</a></div>
-      <div class="footer-col"><h4>Collections</h4><a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a><a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a><a href="#button-shirts">Button Shirts</a></div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 BigTonyCuts — All Rights Reserved</p><p>Port Harcourt, Nigeria 🇳🇬</p></div>
-  </div>
-</footer>
-<a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="float-wa">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-<a href="#" class="back-top" id="backTop">↑</a>
+<div class="toast" id="toast"></div>
 <script>
-// GitHub config - data stored online so all devices see same content
+const ADM_U='TonyCanSew',ADM_P='668899';
 const GH_TOKEN='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';
 const GH_REPO='codex6882/BIGTONYCUTZ';
 const GH_FILE='btc-data.json';
-const CN='dk8jx39ti';
+const CN='dk8jx39ti',UP='bigtonycuts';
 const CATS=['suits','agbada','senator','dashiki','kaftan','etibo','button-shirts'];
-const CAT_LABELS={suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
-const WA='2348119721371';
-
+const CNAMES={suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
+const CLABELS={suits:'The Power Collection',agbada:'Royal Heritage',senator:'The Statesman',dashiki:'Bold Cultural Prints',kaftan:'Elegant Flowing Styles',etibo:'Rivers State Heritage','button-shirts':'Nigerian Print & Pattern'};
+const ALL=['overview','hero','tiles','cultural','about',...CATS];
+let pf={};ALL.forEach(p=>pf[p]=null);
 let DB={hero:[],suits:[],agbada:[],senator:[],dashiki:[],kaftan:[],etibo:[],'button-shirts':[],cultural:[],about:[]};
+let ghSha='';
 
-function imgUrl(item){
-  if(!item)return'';
-  return item.publicId?`https://res.cloudinary.com/${CN}/image/upload/q_auto,f_auto,c_fill,ar_3:4/${item.publicId}`:item.url||'';
+function login(){
+  if(document.getElementById('un').value.trim()===ADM_U&&document.getElementById('pw').value.trim()===ADM_P){
+    sessionStorage.setItem('btca','1');
+    document.getElementById('lp').style.display='none';
+    document.getElementById('db').style.display='block';
+    loadData();
+  }else{document.getElementById('lerr').style.display='block';}
 }
-function waLink(cat,name){return`https://wa.me/${WA}?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20your%20${encodeURIComponent(CAT_LABELS[cat]||cat)}%20style%20-%20${encodeURIComponent(name||'')}.%20Please%20share%20details.`;}
+document.addEventListener('keypress',e=>{if(e.key==='Enter'&&document.getElementById('lp').style.display!=='none')login();});
+function logout(){sessionStorage.removeItem('btca');location.reload();}
+if(sessionStorage.getItem('btca')){document.getElementById('lp').style.display='none';document.getElementById('db').style.display='block';loadData();}
+
+function imgUrl(item){return item&&item.publicId?`https://res.cloudinary.com/${CN}/image/upload/q_auto,f_auto/${item.publicId}`:item&&item.url?item.url:'';}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+function showSaving(v){document.getElementById('savingBar').classList.toggle('show',v);}
 
 async function loadData(){
   try{
-    const r=await fetch(`https://raw.githubusercontent.com/${GH_REPO}/main/${GH_FILE}?t=${Date.now()}`);
-    if(r.ok){const d=await r.json();DB={...DB,...d};}
+    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${GH_TOKEN}`,'Accept':'application/vnd.github.v3+json'}});
+    if(r.ok){
+      const d=await r.json();
+      ghSha=d.sha;
+      const content=JSON.parse(atob(d.content.replace(/\n/g,'')));
+      DB={...DB,...content};
+    }
   }catch(e){}
-  renderAll();
+  renderOv();
 }
 
-// Loader
-window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),700));
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
-document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
-window.addEventListener('scroll',()=>document.getElementById('backTop').classList.toggle('show',window.scrollY>400));
+async function saveData(){
+  showSaving(true);
+  try{
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(DB,null,2))));
+    const body={message:'Update catalogue data',content,branch:'main'};
+    if(ghSha)body.sha=ghSha;
+    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,{method:'PUT',headers:{'Authorization':`token ${GH_TOKEN}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(r.ok){const d=await r.json();ghSha=d.content.sha;toast('✅ Saved! Live on website now.');}
+    else{toast('Save failed. Please try again.');}
+  }catch(e){toast('Save failed. Check connection.');}
+  showSaving(false);
+}
 
-// Hero
-let heroIdx=0;
+function show(id){
+  ALL.forEach(p=>{document.getElementById('p-'+p).style.display='none';const nb=document.getElementById('nb-'+p);if(nb)nb.classList.remove('active');});
+  document.getElementById('p-'+id).style.display='block';
+  const nb=document.getElementById('nb-'+id);if(nb)nb.classList.add('active');
+  const titles={overview:'Overview',hero:'Hero Slides',tiles:'Category Tiles',cultural:'Cultural Edit Images',about:'About Section Image',...Object.fromEntries(CATS.map(c=>[c,CNAMES[c]]))};
+  document.getElementById('ptitle').textContent=titles[id]||id;
+  if(id==='overview')renderOv();
+  else if(id==='hero')renderHero();
+  else if(id==='tiles')renderTiles();
+  else if(id==='cultural')renderCultural();
+  else if(id==='about')renderAbout();
+  else renderCat(id);
+}
+
+function renderOv(){
+  let total=0;CATS.forEach(c=>total+=(DB[c]||[]).length);
+  document.getElementById('p-overview').innerHTML=`
+    <div class="ov-grid">
+      <div class="ov-card"><div class="ov-num">${(DB.hero||[]).length}</div><div class="ov-label">Hero Slides</div><div class="ov-line"></div></div>
+      <div class="ov-card"><div class="ov-num">${total}</div><div class="ov-label">Total Styles</div><div class="ov-line"></div></div>
+      ${CATS.map(c=>`<div class="ov-card" onclick="show('${c}')"><div class="ov-num">${(DB[c]||[]).length}</div><div class="ov-label">${CNAMES[c]}</div><div class="ov-line"></div></div>`).join('')}
+    </div>
+    <div style="background:white;border:1px solid var(--cd);padding:20px">
+      <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--bd);margin-bottom:8px">How It Works</p>
+      <p style="font-size:12px;color:var(--bl);font-family:'Montserrat',sans-serif;line-height:1.8">
+        ✅ All changes save to GitHub — visible on ALL devices instantly<br>
+        • <strong>Hero Slides</strong> — Add the full-screen slideshow images<br>
+        • <strong>Category Tiles</strong> — First image per category becomes its tile<br>
+        • <strong>Cultural Edit</strong> — 2 portrait images in the dark brown section<br>
+        • <strong>About Image</strong> — Image beside your brand story<br>
+        • <strong>Catalogue</strong> — Add/remove product images per category
+      </p>
+    </div>`;
+}
+
 function renderHero(){
-  const slides=DB.hero||[];
-  const container=document.getElementById('heroSlides');
-  const dots=document.getElementById('heroDots');
-  if(!slides.length){
-    container.innerHTML='<div class="slide active"><div class="hero-empty"><p>Add hero images from admin dashboard</p></div></div>';
-    dots.innerHTML='';return;
-  }
-  container.innerHTML=slides.map((s,i)=>`
-    <div class="slide ${i===0?'active':''}" id="hs${i}">
-      <img class="slide-bg" src="${imgUrl(s)}" alt="${s.title||''}"/>
-      <div class="slide-overlay"></div>
-      <div class="slide-content">
-        <span class="slide-label">${s.label||'The BigTonyCuts Collection'}</span>
-        <h1 class="slide-title">${s.title||'Where Culture Meets Class.'}</h1>
-        <p class="slide-sub">${s.sub||'Dressed Like Royalty. Unapologetically Nigerian.'}</p>
-        <a href="#catalogue" class="slide-btn">${s.btn||'Explore the Catalogue'}</a>
+  const items=DB.hero||[];
+  document.getElementById('p-hero').innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">Hero Slides</div><div class="panel-desc">Full-screen slideshow images at the top of your website</div></div><span class="item-badge" id="cnt-hero">${items.length} Slides</span></div>
+      <div class="panel-body">
+        <div class="hero-form">
+          <div class="hero-form-title">Add New Slide</div>
+          <div class="form-grid">
+            <input class="ninp-sm" id="hero-title" placeholder="Headline (e.g. Where Culture Meets Class)"/>
+            <input class="ninp-sm" id="hero-sub" placeholder="Sub text (e.g. Dressed Like Royalty)"/>
+            <input class="ninp-sm" id="hero-label" placeholder="Label (e.g. The BigTonyCuts Collection)"/>
+            <input class="ninp-sm" id="hero-btn" placeholder="Button text (e.g. Explore the Catalogue)"/>
+          </div>
+          <div class="urow">
+            <div class="farea"><div class="ftext"><strong>Upload Slide Image</strong>Landscape/wide image best</div><input type="file" accept="image/*" onchange="hf(event,'hero')"/></div>
+            <button class="abtn" id="ab-hero" onclick="upload('hero')" disabled>+ Add Slide</button>
+          </div>
+          <div class="uling" id="ul-hero"><span>Uploading to Cloudinary...</span><div class="prog"><div class="prog-f"></div></div></div>
+          <div class="prev-row" id="pr-hero"><img id="pi-hero" src=""/><div class="prev-info"><strong>Ready</strong>Fill in fields above then click Add Slide</div></div>
+        </div>
+        <div class="ig-2" id="g-hero">${rHeroItems(items)}</div>
       </div>
-    </div>`).join('');
-  dots.innerHTML=slides.map((_,i)=>`<div class="dot ${i===0?'active':''}" onclick="goSlide(${i})"></div>`).join('');
-  heroIdx=0;
+    </div>`;
 }
-function goSlide(n){
-  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
-  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));
-  heroIdx=n;
+function rHeroItems(items){
+  if(!items.length)return'<div class="hero-empty-box"><span>No slides yet — add your first slide above</span></div>';
+  return items.map((item,i)=>`<div><div class="i2"><img src="${imgUrl(item)}" alt="" loading="lazy"/></div><div class="iname">${item.title||'Slide '+(i+1)}</div><div class="iacts"><button class="rbtn" onclick="rm('hero',${i})">Remove</button></div></div>`).join('');
 }
-setInterval(()=>{const sl=DB.hero||[];if(sl.length>1)goSlide((heroIdx+1)%sl.length);},5000);
 
 function renderTiles(){
-  const c=document.getElementById('catTiles');
-  c.innerHTML=CATS.map(cat=>{
-    const items=DB[cat]||[];const first=items[0];
-    if(!first)return`<div class="cat-tile"><div class="cat-tile-empty"><span>${CAT_LABELS[cat]}</span></div><div class="cat-tile-info"><span class="cat-tile-name">${CAT_LABELS[cat]}</span><div class="cat-tile-line"></div></div></div>`;
-    return`<a href="#${cat}" class="cat-tile"><img src="${imgUrl(first)}" alt="${CAT_LABELS[cat]}" loading="lazy"/><div class="cat-tile-overlay"></div><div class="cat-tile-info"><span class="cat-tile-name">${CAT_LABELS[cat]}</span><div class="cat-tile-line"></div></div></a>`;
-  }).join('');
+  document.getElementById('p-tiles').innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">Category Tiles</div><div class="panel-desc">First image added to each category automatically becomes its homepage tile</div></div></div>
+      <div class="panel-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px">
+          ${CATS.map(cat=>{
+            const items=DB[cat]||[];const img=items[0]?`<img src="${imgUrl(items[0])}" alt="" style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block"/>`:`<div style="aspect-ratio:2/3;background:var(--cd);display:flex;align-items:center;justify-content:center"><span style="color:var(--bl);font-size:9px;font-family:Montserrat,sans-serif;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:8px">No image yet</span></div>`;
+            return`<div onclick="show('${cat}')" style="cursor:pointer">${img}<div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bd);font-family:Montserrat,sans-serif;padding:6px 2px;text-align:center">${CNAMES[cat]}</div><div style="font-size:9px;color:var(--gold);font-family:Montserrat,sans-serif;text-align:center">${items.length} styles → click to manage</div></div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
 }
 
 function renderCultural(){
   const items=DB.cultural||[];
-  const c=document.getElementById('culturalImgs');
-  if(!items.length){c.innerHTML='<div class="cultural-img-empty"><span>Add image</span></div><div class="cultural-img-empty"><span>Add image</span></div>';return;}
-  c.innerHTML=items.slice(0,2).map(item=>`<img src="${imgUrl(item)}" alt="" loading="lazy"/>`).join('');
-  if(items.length<2)c.innerHTML+='<div class="cultural-img-empty"><span>Add image</span></div>';
+  document.getElementById('p-cultural').innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">Cultural Edit Images</div><div class="panel-desc">2 side-by-side portrait images in the "Agbada. Redefined." section</div></div><span class="item-badge">${items.length}/2 Images</span></div>
+      <div class="panel-body">
+        ${items.length<2?`<div class="urow"><input class="ninp" id="n-cultural" placeholder="Image name" oninput="ck('cultural')"/><div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait best</div><input type="file" accept="image/*" onchange="hf(event,'cultural')"/></div><button class="abtn" id="ab-cultural" onclick="upload('cultural')" disabled>+ Add</button></div><div class="uling" id="ul-cultural"><span>Uploading...</span><div class="prog"><div class="prog-f"></div></div></div><div class="prev-row" id="pr-cultural"><img id="pi-cultural" src=""/><div class="prev-info"><strong>Ready</strong>Enter name then click Add</div></div>`:'<p style="font-size:12px;color:var(--bl);font-family:Montserrat,sans-serif;margin-bottom:16px">Both images added. Remove one to replace.</p>'}
+        <div class="ig" id="g-cultural">${rSimple('cultural',items)}</div>
+      </div>
+    </div>`;
 }
 
 function renderAbout(){
   const items=DB.about||[];
-  const c=document.getElementById('aboutImg');
-  if(!items.length){c.innerHTML='<div class="about-img-empty"><span>Add image from admin</span></div>';return;}
-  c.innerHTML=`<img src="${imgUrl(items[0])}" alt="" loading="lazy"/>`;
+  document.getElementById('p-about').innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">About Section Image</div><div class="panel-desc">Image beside your brand story in "Crafted For You" section</div></div><span class="item-badge">${items.length}/1 Image</span></div>
+      <div class="panel-body">
+        ${!items.length?`<div class="urow"><input class="ninp" id="n-about" placeholder="Image name" oninput="ck('about')"/><div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait best</div><input type="file" accept="image/*" onchange="hf(event,'about')"/></div><button class="abtn" id="ab-about" onclick="upload('about')" disabled>+ Add</button></div><div class="uling" id="ul-about"><span>Uploading...</span><div class="prog"><div class="prog-f"></div></div></div><div class="prev-row" id="pr-about"><img id="pi-about" src=""/><div class="prev-info"><strong>Ready</strong>Enter name then click Add</div></div>`:'<p style="font-size:12px;color:var(--bl);font-family:Montserrat,sans-serif;margin-bottom:16px">Image added. Remove to replace.</p>'}
+        <div class="ig" id="g-about">${rSimple('about',items)}</div>
+      </div>
+    </div>`;
 }
 
-function renderCatalogues(){
-  CATS.forEach(cat=>{
-    const grid=document.getElementById(cat+'-grid');if(!grid)return;
-    const items=DB[cat]||[];
-    if(!items.length){grid.innerHTML=`<div class="empty-cat"><p>New styles coming soon</p><span>Add styles from the admin dashboard</span></div>`;return;}
-    grid.innerHTML=items.map(item=>`
-      <a class="product-card" href="${waLink(cat,item.name)}" target="_blank">
-        <div class="product-img-wrap">
-          <img src="${imgUrl(item)}" alt="${item.name}" loading="lazy"/>
-          ${item.isNew?'<span class="new-tag">New</span>':''}
+function renderCat(catId){
+  const items=DB[catId]||[];
+  document.getElementById('p-'+catId).innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">${CNAMES[catId]}</div><div class="panel-desc">${CLABELS[catId]}</div></div><span class="item-badge" id="cnt-${catId}">${items.length} Styles</span></div>
+      <div class="panel-body">
+        <div class="urow">
+          <input class="ninp" id="n-${catId}" placeholder="Style name (e.g. Classic Power Suit)" oninput="ck('${catId}')"/>
+          <div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait best</div><input type="file" accept="image/*" onchange="hf(event,'${catId}')"/></div>
+          <button class="abtn" id="ab-${catId}" onclick="upload('${catId}')" disabled>+ Add Style</button>
         </div>
-        <span class="product-name">${item.name}</span>
-        <span class="product-note">Tap to enquire</span>
-      </a>`).join('');
-  });
+        <div class="uling" id="ul-${catId}"><span>Uploading to Cloudinary...</span><div class="prog"><div class="prog-f"></div></div></div>
+        <div class="prev-row" id="pr-${catId}"><img id="pi-${catId}" src=""/><div class="prev-info"><strong>Ready</strong>Enter style name then click Add</div></div>
+        <div class="ig" id="g-${catId}">${rCatItems(catId,items)}</div>
+      </div>
+    </div>`;
 }
 
-function renderAll(){renderHero();renderTiles();renderCultural();renderAbout();renderCatalogues();}
-loadData();
+function rCatItems(catId,items){
+  if(!items.length)return'<div class="empty">No styles yet. Upload your first style above.</div>';
+  return items.map((item,i)=>`<div class="ii"><img src="${imgUrl(item)}" alt="${item.name}" loading="lazy"/><div class="iname">${item.name}</div><div class="iacts"><button class="nbtn ${item.isNew?'on':''}" onclick="toggleNew('${catId}',${i})">${item.isNew?'★ New':'☆ New'}</button><button class="rbtn" onclick="rm('${catId}',${i})">Remove</button></div></div>`).join('');
+}
+
+function rSimple(key,items){
+  if(!items.length)return'<div class="empty">No images yet.</div>';
+  return items.map((item,i)=>`<div class="ii"><img src="${imgUrl(item)}" alt="" loading="lazy"/><div class="iname">${item.name||'Image '+(i+1)}</div><div class="iacts"><button class="rbtn" onclick="rm('${key}',${i})">Remove</button></div></div>`).join('');
+}
+
+function hf(e,key){
+  const f=e.target.files[0];if(!f)return;
+  pf[key]=f;
+  const r=new FileReader();
+  r.onload=ev=>{
+    const pi=document.getElementById('pi-'+key);const pr=document.getElementById('pr-'+key);
+    if(pi)pi.src=ev.target.result;if(pr)pr.style.display='flex';
+    ck(key);
+  };r.readAsDataURL(f);
+  if(key==='hero'){const btn=document.getElementById('ab-hero');if(btn)btn.disabled=false;}
+}
+function ck(key){
+  const n=document.getElementById('n-'+key)?.value.trim();
+  const btn=document.getElementById('ab-'+key);
+  if(btn&&key!=='hero')btn.disabled=!(n&&pf[key]);
+  if(btn&&key==='hero')btn.disabled=!pf[key];
+}
+
+async function upload(key){
+  const file=pf[key];if(!file)return;
+  const nameEl=document.getElementById('n-'+key);
+  const name=nameEl?nameEl.value.trim():'';
+  const btn=document.getElementById('ab-'+key);const ul=document.getElementById('ul-'+key);
+  if(btn)btn.disabled=true;if(ul)ul.style.display='flex';
+  try{
+    const fd=new FormData();
+    fd.append('file',file);fd.append('upload_preset',UP);fd.append('folder','btc/'+key);
+    const res=await fetch(`https://api.cloudinary.com/v1_1/${CN}/image/upload`,{method:'POST',body:fd});
+    if(!res.ok)throw new Error();
+    const data=await res.json();
+    if(!DB[key])DB[key]=[];
+    const newItem={publicId:data.public_id,url:data.secure_url,name:name||'Image '+(DB[key].length+1),isNew:true};
+    if(key==='hero'){
+      newItem.title=document.getElementById('hero-title')?.value||'';
+      newItem.sub=document.getElementById('hero-sub')?.value||'';
+      newItem.label=document.getElementById('hero-label')?.value||'';
+      newItem.btn=document.getElementById('hero-btn')?.value||'';
+      newItem.name=newItem.title||'Slide '+(DB[key].length+1);
+    }
+    DB[key].push(newItem);
+    await saveData();
+    pf[key]=null;if(nameEl)nameEl.value='';
+    const pr=document.getElementById('pr-'+key);if(pr)pr.style.display='none';
+    const g=document.getElementById('g-'+key);
+    if(key==='hero'){if(g)g.innerHTML=rHeroItems(DB.hero);}
+    else if(key==='cultural'||key==='about'){if(g)g.innerHTML=rSimple(key,DB[key]);}
+    else{if(g)g.innerHTML=rCatItems(key,DB[key]);}
+    const cnt=document.getElementById('cnt-'+key);if(cnt)cnt.textContent=DB[key].length+(key==='hero'?' Slides':' Styles');
+    renderOv();
+    if(key==='cultural'&&DB.cultural.length>=2)renderCultural();
+    if(key==='about'&&DB.about.length>=1)renderAbout();
+  }catch(err){toast('Upload failed. Please try again.');if(btn)btn.disabled=false;}
+  finally{if(ul)ul.style.display='none';}
+}
+
+async function rm(key,i){
+  if(!confirm('Remove "'+(DB[key][i]?.name||'this item')+'" ?'))return;
+  DB[key].splice(i,1);
+  await saveData();
+  const g=document.getElementById('g-'+key);
+  if(key==='hero'){if(g)g.innerHTML=rHeroItems(DB.hero);}
+  else if(key==='cultural'||key==='about'){if(g)g.innerHTML=rSimple(key,DB[key]);}
+  else{if(g)g.innerHTML=rCatItems(key,DB[key]);}
+  const cnt=document.getElementById('cnt-'+key);if(cnt)cnt.textContent=DB[key].length+(key==='hero'?' Slides':' Styles');
+  renderOv();
+  if(key==='cultural')renderCultural();
+  if(key==='about')renderAbout();
+}
+
+function toggleNew(catId,i){
+  DB[catId][i].isNew=!DB[catId][i].isNew;
+  saveData();
+  const g=document.getElementById('g-'+catId);if(g)g.innerHTML=rCatItems(catId,DB[catId]);
+}
 </script>
 </body>
 </html>
