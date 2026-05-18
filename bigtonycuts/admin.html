@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BigTonyCuts — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bd:#2C1810;--bm:#4A2C1A;--bl:#6B3F28;--gold:#C9A84C;--gl:#E8C875;--gp:#F5E6B8;--cr:#F8F2E6;--cd:#EDE4D0;--ow:#FDFAF5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;background:var(--ow);min-height:100vh}
+
+/* LOGIN */
+.lp{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:20px}
+.lp-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1617922001439-4a2e6562f328?w=1920&h=1080&fit=crop&auto=format') center/cover}
+.lp-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,24,16,0.94),rgba(74,44,26,0.88))}
+.lp-card{position:relative;z-index:1;background:rgba(253,250,245,0.97);padding:52px 44px;max-width:400px;width:100%}
+.lp-logo{text-align:center;margin-bottom:24px}
+.logo-btc{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;color:var(--gold);letter-spacing:5px}
+.logo-sub{font-size:8px;color:var(--bl);letter-spacing:6px;text-transform:uppercase;margin-top:3px;font-family:'Montserrat',sans-serif}
+.lp-badge{text-align:center;color:var(--bl);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--cd)}
+.field label{display:block;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--bl);margin-bottom:6px}
+.field input{width:100%;border:1px solid var(--cd);background:white;padding:12px 15px;font-size:14px;font-family:'Montserrat',sans-serif;outline:none;color:var(--bd);margin-bottom:14px}
+.field input:focus{border-color:var(--gold)}
+.lp-btn{width:100%;background:var(--bd);color:var(--gl);border:none;padding:14px;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:pointer;margin-top:6px;transition:background 0.2s}
+.lp-btn:hover{background:var(--bm)}
+.lp-err{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:10px 14px;font-size:12px;margin-bottom:14px;display:none;text-align:center}
+
+/* DASHBOARD */
+.db{display:none;min-height:100vh}
+.sb{width:210px;background:var(--bd);position:fixed;top:0;left:0;bottom:0;z-index:100;display:flex;flex-direction:column;overflow-y:auto}
+.sb-logo{padding:22px 18px;border-bottom:1px solid rgba(201,168,76,0.1)}
+.sb-badge{padding:9px 18px;color:rgba(255,255,255,0.22);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(201,168,76,0.06)}
+.sb-section{padding:10px 0}
+.sb-section-title{padding:8px 18px 4px;color:rgba(255,255,255,0.2);font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif}
+.sb-btn{display:flex;align-items:center;gap:9px;padding:10px 18px;color:rgba(255,255,255,0.45);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;background:none;border:none;cursor:pointer;width:100%;transition:all 0.2s;border-left:2px solid transparent}
+.sb-btn:hover,.sb-btn.active{color:var(--gl);background:rgba(201,168,76,0.07);border-left-color:var(--gold)}
+.sb-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0.3;flex-shrink:0;transition:opacity 0.2s}
+.sb-btn:hover .sb-dot,.sb-btn.active .sb-dot{opacity:1}
+.sb-foot{padding:12px 18px;border-top:1px solid rgba(201,168,76,0.1);margin-top:auto}
+.sb-link{display:flex;align-items:center;gap:6px;color:var(--gold);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;text-decoration:none;margin-bottom:10px}
+.sb-out{color:rgba(255,255,255,0.28);font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;background:none;border:none;cursor:pointer;padding:0;transition:color 0.2s}
+.sb-out:hover{color:rgba(255,255,255,0.6)}
+.main{margin-left:210px;min-height:100vh}
+.topbar{background:white;padding:16px 32px;border-bottom:1px solid var(--cd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar h1{font-family:'Playfair Display',serif;font-size:19px;color:var(--bd)}
+.welcome{color:var(--bl);font-size:11px}.welcome span{color:var(--gold);font-weight:600}
+.content{padding:32px}
+
+/* OVERVIEW */
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.ov-card{background:white;border:1px solid var(--cd);padding:20px;text-align:center;cursor:pointer;transition:border-color 0.2s}
+.ov-card:hover{border-color:var(--gold)}
+.ov-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--bd)}
+.ov-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bl);margin-top:3px;font-family:'Montserrat',sans-serif}
+.ov-line{width:18px;height:1px;background:var(--gold);margin:8px auto 0}
+
+/* PANEL */
+.panel{background:white;border:1px solid var(--cd);margin-bottom:24px}
+.panel-head{padding:16px 22px;border-bottom:1px solid var(--cd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.panel-title{font-family:'Playfair Display',serif;font-size:16px;color:var(--bd)}
+.panel-desc{color:var(--bl);font-size:10px;font-family:'Montserrat',sans-serif;letter-spacing:0.5px;margin-top:2px}
+.item-badge{background:var(--cr);color:var(--bl);font-size:9px;font-weight:600;letter-spacing:1px;padding:3px 9px;font-family:'Montserrat',sans-serif;white-space:nowrap}
+.panel-body{padding:22px}
+
+/* UPLOAD */
+.urow{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:flex-end}
+.ninp{flex:1;min-width:160px;border:1px solid var(--cd);padding:11px 13px;font-size:13px;font-family:'Montserrat',sans-serif;color:var(--bd);outline:none}
+.ninp:focus{border-color:var(--gold)}
+.ninp-sm{width:100%;border:1px solid var(--cd);padding:9px 12px;font-size:12px;font-family:'Montserrat',sans-serif;color:var(--bd);outline:none;margin-bottom:8px}
+.ninp-sm:focus{border-color:var(--gold)}
+.farea{position:relative;border:1.5px dashed rgba(201,168,76,0.45);padding:12px 16px;cursor:pointer;background:var(--ow);transition:background 0.2s;min-width:130px;text-align:center;align-self:stretch;display:flex;align-items:center;justify-content:center}
+.farea:hover{background:var(--cr)}
+.farea input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.ftext{font-size:10px;color:var(--bl);pointer-events:none}
+.ftext strong{display:block;color:var(--gold);font-size:11px;margin-bottom:1px}
+.abtn{background:var(--bd);color:var(--gl);border:none;padding:11px 18px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.abtn:hover:not(:disabled){background:var(--bm)}
+.abtn:disabled{opacity:0.35;cursor:not-allowed}
+.prev-row{display:none;align-items:center;gap:10px;padding:9px 12px;background:var(--cr);margin-bottom:12px;border:1px solid var(--cd)}
+.prev-row img{width:40px;height:52px;object-fit:cover}
+.prev-info{font-size:11px;color:var(--bl)}.prev-info strong{display:block;color:var(--bd);font-size:12px;margin-bottom:1px}
+.uling{display:none;align-items:center;gap:10px;padding:9px 12px;background:#f0fdf4;border:1px solid #bbf7d0;margin-bottom:12px}
+.uling span{font-size:11px;color:#16a34a;font-family:'Montserrat',sans-serif}
+.prog{flex:1;height:2px;background:#dcfce7}.prog-f{height:100%;background:#16a34a;animation:pf 1.4s ease-in-out infinite}
+@keyframes pf{0%{width:0}50%{width:60%}100%{width:100%}}
+
+/* GRIDS */
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.ig-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.ii img,.i2 img{width:100%;display:block}
+.ii img{aspect-ratio:3/4;object-fit:cover}
+.i2 img{aspect-ratio:16/9;object-fit:cover}
+.iname{font-size:10px;color:var(--bl);padding:5px 2px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Montserrat',sans-serif}
+.iacts{display:flex;gap:3px}
+.rbtn{flex:1;background:#fef2f2;border:1px solid #fecaca;color:#dc2626;padding:4px;font-size:9px;font-weight:600;letter-spacing:1px;font-family:'Montserrat',sans-serif;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.rbtn:hover{background:#dc2626;color:white}
+.nbtn{flex:1;background:var(--cr);border:1px solid var(--cd);color:var(--bl);padding:4px;font-size:9px;font-weight:600;letter-spacing:1px;font-family:'Montserrat',sans-serif;cursor:pointer;text-transform:uppercase;transition:all 0.2s}
+.nbtn.on{background:var(--gold);color:var(--bd);border-color:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;padding:36px;color:var(--bl);font-size:11px;font-family:'Montserrat',sans-serif;border:1px dashed var(--cd);letter-spacing:1px}
+.hero-empty-img{aspect-ratio:16/9;background:var(--cd);display:flex;align-items:center;justify-content:center;grid-column:1/-1}
+.hero-empty-img span{color:var(--bl);font-size:10px;font-family:'Montserrat',sans-serif;letter-spacing:2px;text-transform:uppercase}
+
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:22px;background:var(--bd);color:var(--gl);padding:11px 18px;font-size:11px;font-family:'Montserrat',sans-serif;letter-spacing:1px;z-index:500;transform:translateY(70px);opacity:0;transition:all 0.3s;border-left:3px solid var(--gold)}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* HERO SLIDE FORM */
+.hero-form{background:var(--cr);border:1px solid var(--cd);padding:16px;margin-bottom:16px}
+.hero-form-title{font-family:'Playfair Display',serif;font-size:14px;color:var(--bd);margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+
+@media(max-width:768px){
+  .sb{display:none}.main{margin-left:0}
+  .content{padding:16px}.ov-grid{grid-template-columns:repeat(2,1fr)}
+  .urow{flex-direction:column}.ig{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="lp" id="lp">
+  <div class="lp-bg"></div><div class="lp-ov"></div>
+  <div class="lp-card">
+    <div class="lp-logo"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div></div>
+    <div class="lp-badge">Admin Dashboard</div>
+    <div class="lp-err" id="lerr">Invalid credentials. Please try again.</div>
+    <div class="field"><label>Username</label><input type="text" id="un" autocomplete="off"/></div>
+    <div class="field"><label>Password</label><input type="password" id="pw"/></div>
+    <button class="lp-btn" onclick="login()">Enter Dashboard</button>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="db" id="db">
+  <div class="sb">
+    <div class="sb-logo"><div class="logo-btc" style="font-size:20px">BTC</div><div class="logo-sub">BigTonyCuts</div></div>
+    <div class="sb-badge">Catalogue Manager</div>
+    <div class="sb-section">
+      <div class="sb-section-title">Main Interface</div>
+      <button class="sb-btn active" onclick="show('overview')" id="nb-overview"><span class="sb-dot"></span>Overview</button>
+      <button class="sb-btn" onclick="show('hero')" id="nb-hero"><span class="sb-dot"></span>Hero Slides</button>
+      <button class="sb-btn" onclick="show('tiles')" id="nb-tiles"><span class="sb-dot"></span>Category Tiles</button>
+      <button class="sb-btn" onclick="show('cultural')" id="nb-cultural"><span class="sb-dot"></span>Cultural Edit</button>
+      <button class="sb-btn" onclick="show('about')" id="nb-about"><span class="sb-dot"></span>About Image</button>
+    </div>
+    <div class="sb-section">
+      <div class="sb-section-title">Catalogue</div>
+      <button class="sb-btn" onclick="show('suits')" id="nb-suits"><span class="sb-dot"></span>Suits</button>
+      <button class="sb-btn" onclick="show('agbada')" id="nb-agbada"><span class="sb-dot"></span>Agbada</button>
+      <button class="sb-btn" onclick="show('senator')" id="nb-senator"><span class="sb-dot"></span>Senator</button>
+      <button class="sb-btn" onclick="show('dashiki')" id="nb-dashiki"><span class="sb-dot"></span>Dashiki</button>
+      <button class="sb-btn" onclick="show('kaftan')" id="nb-kaftan"><span class="sb-dot"></span>Kaftan</button>
+      <button class="sb-btn" onclick="show('etibo')" id="nb-etibo"><span class="sb-dot"></span>Etibo</button>
+      <button class="sb-btn" onclick="show('button-shirts')" id="nb-button-shirts"><span class="sb-dot"></span>Button Shirts</button>
+    </div>
+    <div class="sb-foot">
+      <a href="index.html" target="_blank" class="sb-link">↗ View Live Site</a>
+      <button class="sb-out" onclick="logout()">← Sign Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1 id="ptitle">Overview</h1>
+      <div class="welcome">Welcome back, <span>Tony 👑</span></div>
+    </div>
+    <div class="content">
+      <div id="p-overview"></div>
+      <div id="p-hero" style="display:none"></div>
+      <div id="p-tiles" style="display:none"></div>
+      <div id="p-cultural" style="display:none"></div>
+      <div id="p-about" style="display:none"></div>
+      <div id="p-suits" style="display:none"></div>
+      <div id="p-agbada" style="display:none"></div>
+      <div id="p-senator" style="display:none"></div>
+      <div id="p-dashiki" style="display:none"></div>
+      <div id="p-kaftan" style="display:none"></div>
+      <div id="p-etibo" style="display:none"></div>
+      <div id="p-button-shirts" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const U='TonyCanSew',P='668899',CN='dk8jx39ti',UP='bigtonycuts';
+const CATS=['suits','agbada','senator','dashiki','kaftan','etibo','button-shirts'];
+const CNAMES={suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
+const CLABELS={suits:'The Power Collection',agbada:'Royal Heritage',senator:'The Statesman',dashiki:'Bold Cultural Prints',kaftan:'Elegant Flowing Styles',etibo:'Rivers State Heritage','button-shirts':'Nigerian Print & Pattern'};
+const ALL_PANELS=['overview','hero','tiles','cultural','about',...CATS];
+let pf={};ALL_PANELS.forEach(p=>pf[p]=null);
+
+function login(){
+  if(document.getElementById('un').value.trim()===U&&document.getElementById('pw').value.trim()===P){
+    sessionStorage.setItem('btca','1');
+    document.getElementById('lp').style.display='none';
+    document.getElementById('db').style.display='block';
+    init();
+  }else{document.getElementById('lerr').style.display='block';}
+}
+document.addEventListener('keypress',e=>{if(e.key==='Enter'&&document.getElementById('lp').style.display!=='none')login();});
+function logout(){sessionStorage.removeItem('btca');location.reload();}
+if(sessionStorage.getItem('btca')){document.getElementById('lp').style.display='none';document.getElementById('db').style.display='block';init();}
+
+function gi(k){const s=localStorage.getItem('btc_'+k);return s?JSON.parse(s):[];}
+function si(k,v){localStorage.setItem('btc_'+k,JSON.stringify(v));}
+function imgUrl(item){return item.publicId?`https://res.cloudinary.com/${CN}/image/upload/q_auto,f_auto/${item.publicId}`:item.url||'';}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+
+function show(id){
+  ALL_PANELS.forEach(p=>{
+    document.getElementById('p-'+p).style.display='none';
+    const nb=document.getElementById('nb-'+p);if(nb)nb.classList.remove('active');
+  });
+  document.getElementById('p-'+id).style.display='block';
+  const nb=document.getElementById('nb-'+id);if(nb)nb.classList.add('active');
+  const titles={overview:'Overview',hero:'Hero Slides',tiles:'Category Tiles',cultural:'Cultural Edit Images',about:'About Section Image',suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
+  document.getElementById('ptitle').textContent=titles[id]||id;
+  if(id==='overview')renderOv();
+  else if(id==='hero')renderHero();
+  else if(id==='tiles')renderTiles();
+  else if(id==='cultural')renderCultural();
+  else if(id==='about')renderAbout();
+  else renderCat(id);
+}
+
+function init(){renderOv();}
+
+// OVERVIEW
+function renderOv(){
+  let total=0;CATS.forEach(c=>total+=gi(c).length);
+  const heroCount=gi('hero').length;
+  document.getElementById('p-overview').innerHTML=`
+    <div class="ov-grid">
+      <div class="ov-card"><div class="ov-num">${heroCount}</div><div class="ov-label">Hero Slides</div><div class="ov-line"></div></div>
+      <div class="ov-card"><div class="ov-num">${total}</div><div class="ov-label">Total Styles</div><div class="ov-line"></div></div>
+      ${CATS.map(c=>`<div class="ov-card" onclick="show('${c}')"><div class="ov-num">${gi(c).length}</div><div class="ov-label">${CNAMES[c]}</div><div class="ov-line"></div></div>`).join('')}
+    </div>
+    <div style="background:white;border:1px solid var(--cd);padding:20px;margin-bottom:16px">
+      <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--bd);margin-bottom:8px">Quick Guide</p>
+      <p style="font-size:12px;color:var(--bl);font-family:'Montserrat',sans-serif;line-height:1.7">
+        • <strong>Hero Slides</strong> — Add/edit the slideshow images at the top of the website<br>
+        • <strong>Category Tiles</strong> — The first image of each category is used as its tile<br>
+        • <strong>Cultural Edit</strong> — Add the 2 side-by-side images in the dark brown section<br>
+        • <strong>About Image</strong> — The image shown beside your brand story<br>
+        • <strong>Catalogue sections</strong> — Add/remove product images per category
+      </p>
+    </div>`;
+}
+
+// HERO SLIDES
+function renderHero(){
+  const items=gi('hero');
+  document.getElementById('p-hero').innerHTML=`
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">Hero Slides</div><div class="panel-desc">These are the full-screen slideshow images at the top of your website</div></div>
+        <span class="item-badge" id="cnt-hero">${items.length} Slides</span>
+      </div>
+      <div class="panel-body">
+        <div class="hero-form">
+          <div class="hero-form-title">Add New Slide</div>
+          <div class="form-grid">
+            <input class="ninp-sm" id="hero-title" placeholder="Headline (e.g. Where Culture Meets Class)"/>
+            <input class="ninp-sm" id="hero-sub" placeholder="Sub text (e.g. Dressed Like Royalty)"/>
+            <input class="ninp-sm" id="hero-label" placeholder="Label (e.g. The BigTonyCuts Collection)"/>
+            <input class="ninp-sm" id="hero-btn" placeholder="Button text (e.g. Explore the Catalogue)"/>
+          </div>
+          <div class="urow">
+            <div class="farea" id="fa-hero">
+              <div class="ftext"><strong>Upload Slide Image</strong>Best size: wide/landscape</div>
+              <input type="file" accept="image/*" onchange="hf(event,'hero')"/>
+            </div>
+            <button class="abtn" id="ab-hero" onclick="upload('hero')" disabled>+ Add Slide</button>
+          </div>
+          <div class="uling" id="ul-hero"><span>Uploading...</span><div class="prog"><div class="prog-f"></div></div></div>
+          <div class="prev-row" id="pr-hero"><img id="pi-hero" src=""/><div class="prev-info"><strong>Ready to upload</strong>Fill in text fields above then click Add Slide</div></div>
+        </div>
+        <div class="ig-2" id="g-hero">${renderHeroItems(items)}</div>
+      </div>
+    </div>`;
+}
+
+function renderHeroItems(items){
+  if(!items.length)return'<div class="hero-empty-img"><span>No slides yet — add your first slide above</span></div>';
+  return items.map((item,i)=>`
+    <div>
+      <div class="i2"><img src="${imgUrl(item)}" alt="" loading="lazy"/></div>
+      <div class="iname">${item.title||'Slide '+(i+1)}</div>
+      <div class="iacts">
+        <button class="rbtn" onclick="rm('hero',${i})">Remove</button>
+      </div>
+    </div>`).join('');
+}
+
+// CATEGORY TILES
+function renderTiles(){
+  document.getElementById('p-tiles').innerHTML=`
+    <div class="panel">
+      <div class="panel-head"><div><div class="panel-title">Category Tiles</div><div class="panel-desc">The first image you add to each category automatically appears as its tile on the homepage</div></div></div>
+      <div class="panel-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px">
+          ${CATS.map(cat=>{
+            const items=gi(cat);
+            const img=items[0]?`<img src="${imgUrl(items[0])}" alt="${CNAMES[cat]}" style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block"/>`:`<div style="aspect-ratio:2/3;background:var(--cd);display:flex;align-items:center;justify-content:center"><span style="color:var(--bl);font-size:9px;font-family:Montserrat,sans-serif;letter-spacing:2px;text-transform:uppercase">No image</span></div>`;
+            return`<div onclick="show('${cat}')" style="cursor:pointer">
+              ${img}
+              <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bd);font-family:Montserrat,sans-serif;padding:6px 2px;text-align:center">${CNAMES[cat]}</div>
+              <div style="font-size:9px;color:var(--gold);font-family:Montserrat,sans-serif;text-align:center;letter-spacing:1px">${items.length} styles → click to manage</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// CULTURAL EDIT
+function renderCultural(){
+  const items=gi('cultural');
+  document.getElementById('p-cultural').innerHTML=`
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">Cultural Edit Images</div><div class="panel-desc">The 2 side-by-side images in the dark brown "Agbada. Redefined." section</div></div>
+        <span class="item-badge">${items.length}/2 Images</span>
+      </div>
+      <div class="panel-body">
+        ${items.length<2?`
+        <div class="urow">
+          <input class="ninp" id="n-cultural" placeholder="Image name (e.g. Agbada Style 1)" oninput="ck('cultural')"/>
+          <div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait format best</div><input type="file" accept="image/*" onchange="hf(event,'cultural')"/></div>
+          <button class="abtn" id="ab-cultural" onclick="upload('cultural')" disabled>+ Add</button>
+        </div>
+        <div class="uling" id="ul-cultural"><span>Uploading...</span><div class="prog"><div class="prog-f"></div></div></div>
+        <div class="prev-row" id="pr-cultural"><img id="pi-cultural" src=""/><div class="prev-info"><strong>Ready</strong>Enter name then click Add</div></div>`:'<p style="font-size:12px;color:var(--bl);font-family:Montserrat,sans-serif;margin-bottom:16px">Both images added. Remove one to replace it.</p>'}
+        <div class="ig" id="g-cultural">${renderSimpleItems('cultural',items,'portrait')}</div>
+      </div>
+    </div>`;
+}
+
+// ABOUT IMAGE
+function renderAbout(){
+  const items=gi('about');
+  document.getElementById('p-about').innerHTML=`
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">About Section Image</div><div class="panel-desc">The image shown beside your brand story in the "Crafted For You" section</div></div>
+        <span class="item-badge">${items.length}/1 Image</span>
+      </div>
+      <div class="panel-body">
+        ${!items.length?`
+        <div class="urow">
+          <input class="ninp" id="n-about" placeholder="Image name" oninput="ck('about')"/>
+          <div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait format best</div><input type="file" accept="image/*" onchange="hf(event,'about')"/></div>
+          <button class="abtn" id="ab-about" onclick="upload('about')" disabled>+ Add</button>
+        </div>
+        <div class="uling" id="ul-about"><span>Uploading...</span><div class="prog"><div class="prog-f"></div></div></div>
+        <div class="prev-row" id="pr-about"><img id="pi-about" src=""/><div class="prev-info"><strong>Ready</strong>Enter name then click Add</div></div>`:'<p style="font-size:12px;color:var(--bl);font-family:Montserrat,sans-serif;margin-bottom:16px">Image added. Remove to replace.</p>'}
+        <div class="ig" id="g-about">${renderSimpleItems('about',items,'portrait')}</div>
+      </div>
+    </div>`;
+}
+
+// CATALOGUE CAT
+function renderCat(catId){
+  const items=gi(catId);
+  document.getElementById('p-'+catId).innerHTML=`
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">${CNAMES[catId]}</div><div class="panel-desc">${CLABELS[catId]}</div></div>
+        <span class="item-badge" id="cnt-${catId}">${items.length} Styles</span>
+      </div>
+      <div class="panel-body">
+        <div class="urow">
+          <input class="ninp" id="n-${catId}" placeholder="Style name (e.g. Classic Power Suit)" oninput="ck('${catId}')"/>
+          <div class="farea"><div class="ftext"><strong>Upload Image</strong>Portrait format best</div><input type="file" accept="image/*" onchange="hf(event,'${catId}')"/></div>
+          <button class="abtn" id="ab-${catId}" onclick="upload('${catId}')" disabled>+ Add Style</button>
+        </div>
+        <div class="uling" id="ul-${catId}"><span>Uploading to Cloudinary...</span><div class="prog"><div class="prog-f"></div></div></div>
+        <div class="prev-row" id="pr-${catId}"><img id="pi-${catId}" src=""/><div class="prev-info"><strong>Ready to upload</strong>Enter style name then click Add</div></div>
+        <div class="ig" id="g-${catId}">${renderCatItems(catId,items)}</div>
+      </div>
+    </div>`;
+}
+
+function renderCatItems(catId,items){
+  if(!items.length)return'<div class="empty">No styles yet. Upload your first style above.</div>';
+  return items.map((item,i)=>`
+    <div class="ii">
+      <img src="${imgUrl(item)}" alt="${item.name}" loading="lazy"/>
+      <div class="iname">${item.name}</div>
+      <div class="iacts">
+        <button class="nbtn ${item.isNew?'on':''}" onclick="toggleNew('${catId}',${i})">${item.isNew?'★ New':'☆ New'}</button>
+        <button class="rbtn" onclick="rm('${catId}',${i})">Remove</button>
+      </div>
+    </div>`).join('');
+}
+
+function renderSimpleItems(key,items,type){
+  if(!items.length)return'<div class="empty">No images yet.</div>';
+  return items.map((item,i)=>`
+    <div class="${type==='wide'?'i2':'ii'}">
+      <img src="${imgUrl(item)}" alt="${item.name||''}" loading="lazy"/>
+      <div class="iname">${item.name||'Image '+(i+1)}</div>
+      <div class="iacts"><button class="rbtn" onclick="rm('${key}',${i})">Remove</button></div>
+    </div>`).join('');
+}
+
+// FILE HANDLER
+function hf(e,key){
+  const f=e.target.files[0];if(!f)return;
+  pf[key]=f;
+  const r=new FileReader();
+  r.onload=ev=>{
+    const pi=document.getElementById('pi-'+key);
+    const pr=document.getElementById('pr-'+key);
+    if(pi){pi.src=ev.target.result;}
+    if(pr){pr.style.display='flex';}
+    ck(key);
+  };r.readAsDataURL(f);
+  // For hero, enable button directly
+  if(key==='hero'){
+    const btn=document.getElementById('ab-hero');
+    if(btn)btn.disabled=false;
+  }
+}
+
+function ck(key){
+  const n=document.getElementById('n-'+key)?.value.trim();
+  const btn=document.getElementById('ab-'+key);
+  if(btn&&key!=='hero')btn.disabled=!(n&&pf[key]);
+  if(btn&&key==='hero')btn.disabled=!pf[key];
+}
+
+// UPLOAD
+async function upload(key){
+  const file=pf[key];if(!file)return;
+  const nameEl=document.getElementById('n-'+key);
+  const name=nameEl?nameEl.value.trim():'';
+  const btn=document.getElementById('ab-'+key);
+  const ul=document.getElementById('ul-'+key);
+  if(btn)btn.disabled=true;
+  if(ul)ul.style.display='flex';
+  try{
+    const fd=new FormData();
+    fd.append('file',file);
+    fd.append('upload_preset',UP);
+    fd.append('folder','btc/'+key);
+    const res=await fetch(`https://api.cloudinary.com/v1_1/${CN}/image/upload`,{method:'POST',body:fd});
+    if(!res.ok)throw new Error();
+    const data=await res.json();
+    const items=gi(key);
+    // Build item object
+    const newItem={publicId:data.public_id,url:data.secure_url,name:name||('Image '+(items.length+1)),isNew:true};
+    // For hero, collect text fields
+    if(key==='hero'){
+      newItem.title=document.getElementById('hero-title')?.value||'';
+      newItem.sub=document.getElementById('hero-sub')?.value||'';
+      newItem.label=document.getElementById('hero-label')?.value||'';
+      newItem.btn=document.getElementById('hero-btn')?.value||'';
+      newItem.name=newItem.title||('Slide '+(items.length+1));
+    }
+    items.push(newItem);
+    si(key,items);
+    pf[key]=null;
+    if(nameEl)nameEl.value='';
+    const pr=document.getElementById('pr-'+key);if(pr)pr.style.display='none';
+    // Re-render
+    const g=document.getElementById('g-'+key);
+    if(key==='hero'){if(g)g.innerHTML=renderHeroItems(items);}
+    else if(key==='cultural'||key==='about'){if(g)g.innerHTML=renderSimpleItems(key,items,'portrait');}
+    else{if(g)g.innerHTML=renderCatItems(key,items);}
+    const cnt=document.getElementById('cnt-'+key);
+    if(cnt)cnt.textContent=items.length+(key==='hero'?' Slides':' Styles');
+    toast('✓ Added successfully!');
+    renderOv();
+    // Reload panel to refresh add form if needed
+    if(key==='cultural'&&items.length>=2)renderCultural();
+    if(key==='about'&&items.length>=1)renderAbout();
+  }catch(err){
+    toast('Upload failed. Please check your connection.');
+    if(btn)btn.disabled=false;
+  }finally{if(ul)ul.style.display='none';}
+}
+
+function rm(key,i){
+  const items=gi(key);
+  if(!confirm('Remove "'+(items[i]?.name||'this item')+'" ?'))return;
+  items.splice(i,1);si(key,items);
+  const g=document.getElementById('g-'+key);
+  if(key==='hero'){if(g)g.innerHTML=renderHeroItems(items);}
+  else if(key==='cultural'||key==='about'){if(g)g.innerHTML=renderSimpleItems(key,items,'portrait');}
+  else{if(g)g.innerHTML=renderCatItems(key,items);}
+  const cnt=document.getElementById('cnt-'+key);
+  if(cnt)cnt.textContent=items.length+(key==='hero'?' Slides':' Styles');
+  toast('Removed.');renderOv();
+  // Refresh panel if needed
+  if(key==='cultural')renderCultural();
+  if(key==='about')renderAbout();
+}
+
+function toggleNew(catId,i){
+  const items=gi(catId);items[i].isNew=!items[i].isNew;si(catId,items);
+  const g=document.getElementById('g-'+catId);
+  if(g)g.innerHTML=renderCatItems(catId,items);
+}
+</script>
+</body>
+</html>
