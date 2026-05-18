@@ -41,7 +41,7 @@
 .topbar h1{font-family:'Playfair Display',serif;font-size:19px;color:var(--bd)}
 .welcome{color:var(--bl);font-size:11px}.welcome span{color:var(--gold);font-weight:600}
 .content{padding:32px}
-.saving-bar{background:#fff3cd;border:1px solid #ffc107;padding:10px 16px;font-size:12px;color:#856404;font-family:'Montserrat',sans-serif;margin-bottom:16px;display:none;border-radius:2px}
+.saving-bar{background:#f0fdf4;border:1px solid #bbf7d0;padding:10px 16px;font-size:12px;color:#16a34a;font-family:'Montserrat',sans-serif;margin-bottom:16px;display:none}
 .saving-bar.show{display:block}
 .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
 .ov-card{background:white;border:1px solid var(--cd);padding:20px;text-align:center;cursor:pointer;transition:border-color 0.2s}
@@ -142,7 +142,7 @@
       <div class="welcome">Welcome back, <span>Tony 👑</span></div>
     </div>
     <div class="content">
-      <div class="saving-bar" id="savingBar">💾 Saving changes... please wait</div>
+      <div class="saving-bar" id="savingBar">💾 Saving changes to Supabase...</div>
       <div id="p-overview"></div>
       <div id="p-hero" style="display:none"></div>
       <div id="p-tiles" style="display:none"></div>
@@ -161,9 +161,8 @@
 <div class="toast" id="toast"></div>
 <script>
 const ADM_U='TonyCanSew',ADM_P='668899';
-const GH_TOKEN=window.ENV_GH_TOKEN||'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';
-const GH_REPO='codex6882/BIGTONYCUTZ';
-const GH_FILE='btc-data.json';
+const SUPA_URL='https://efribdzucyceppoffcna.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmcmliZHp1Y3ljZXBwb2ZmY25hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxMjA0OTMsImV4cCI6MjA5NDY5NjQ5M30.a_uiHNRXXkhkVsxTH2aL7iRl5Tcv5-Y8ttEsfcYze2M';
 const CN='dk8jx39ti',UP='bigtonycuts';
 const CATS=['suits','agbada','senator','dashiki','kaftan','etibo','button-shirts'];
 const CNAMES={suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
@@ -171,7 +170,8 @@ const CLABELS={suits:'The Power Collection',agbada:'Royal Heritage',senator:'The
 const ALL=['overview','hero','tiles','cultural','about',...CATS];
 let pf={};ALL.forEach(p=>pf[p]=null);
 let DB={hero:[],suits:[],agbada:[],senator:[],dashiki:[],kaftan:[],etibo:[],'button-shirts':[],cultural:[],about:[]};
-let ghSha='';
+
+const SB_HEADERS={'apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`,'Content-Type':'application/json'};
 
 function login(){
   if(document.getElementById('un').value.trim()===ADM_U&&document.getElementById('pw').value.trim()===ADM_P){
@@ -191,25 +191,21 @@ function showSaving(v){document.getElementById('savingBar').classList.toggle('sh
 
 async function loadData(){
   try{
-    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,{headers:{'Authorization':`token ${GH_TOKEN}`,'Accept':'application/vnd.github.v3+json'}});
-    if(r.ok){
-      const d=await r.json();
-      ghSha=d.sha;
-      const content=JSON.parse(atob(d.content.replace(/\n/g,'')));
-      DB={...DB,...content};
-    }
+    const r=await fetch(`${SUPA_URL}/rest/v1/btc_data?select=key,value`,{headers:SB_HEADERS});
+    if(r.ok){const rows=await r.json();rows.forEach(row=>{DB[row.key]=row.value||[];});}
   }catch(e){}
   renderOv();
 }
 
-async function saveData(){
+async function saveKey(key){
   showSaving(true);
   try{
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(DB,null,2))));
-    const body={message:'Update catalogue data',content,branch:'main'};
-    if(ghSha)body.sha=ghSha;
-    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,{method:'PUT',headers:{'Authorization':`token ${GH_TOKEN}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
-    if(r.ok){const d=await r.json();ghSha=d.content.sha;toast('✅ Saved! Live on website now.');}
+    const r=await fetch(`${SUPA_URL}/rest/v1/btc_data?key=eq.${key}`,{
+      method:'PATCH',
+      headers:{...SB_HEADERS,'Prefer':'return=minimal'},
+      body:JSON.stringify({value:DB[key]})
+    });
+    if(r.ok){toast('✅ Saved! Live on all devices now.');}
     else{toast('Save failed. Please try again.');}
   }catch(e){toast('Save failed. Check connection.');}
   showSaving(false);
@@ -240,12 +236,12 @@ function renderOv(){
     <div style="background:white;border:1px solid var(--cd);padding:20px">
       <p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--bd);margin-bottom:8px">How It Works</p>
       <p style="font-size:12px;color:var(--bl);font-family:'Montserrat',sans-serif;line-height:1.8">
-        ✅ All changes save to GitHub — visible on ALL devices instantly<br>
-        • <strong>Hero Slides</strong> — Add the full-screen slideshow images<br>
+        ✅ All changes save to Supabase — visible on ALL devices instantly<br>
+        • <strong>Hero Slides</strong> — Full-screen slideshow images<br>
         • <strong>Category Tiles</strong> — First image per category becomes its tile<br>
-        • <strong>Cultural Edit</strong> — 2 portrait images in the dark brown section<br>
+        • <strong>Cultural Edit</strong> — 2 portrait images in dark brown section<br>
         • <strong>About Image</strong> — Image beside your brand story<br>
-        • <strong>Catalogue</strong> — Add/remove product images per category
+        • <strong>Catalogue</strong> — Add/remove product styles per category
       </p>
     </div>`;
 }
@@ -254,7 +250,7 @@ function renderHero(){
   const items=DB.hero||[];
   document.getElementById('p-hero').innerHTML=`
     <div class="panel">
-      <div class="panel-head"><div><div class="panel-title">Hero Slides</div><div class="panel-desc">Full-screen slideshow images at the top of your website</div></div><span class="item-badge" id="cnt-hero">${items.length} Slides</span></div>
+      <div class="panel-head"><div><div class="panel-title">Hero Slides</div><div class="panel-desc">Full-screen slideshow at the top of your website</div></div><span class="item-badge" id="cnt-hero">${items.length} Slides</span></div>
       <div class="panel-body">
         <div class="hero-form">
           <div class="hero-form-title">Add New Slide</div>
@@ -287,7 +283,8 @@ function renderTiles(){
       <div class="panel-body">
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px">
           ${CATS.map(cat=>{
-            const items=DB[cat]||[];const img=items[0]?`<img src="${imgUrl(items[0])}" alt="" style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block"/>`:`<div style="aspect-ratio:2/3;background:var(--cd);display:flex;align-items:center;justify-content:center"><span style="color:var(--bl);font-size:9px;font-family:Montserrat,sans-serif;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:8px">No image yet</span></div>`;
+            const items=DB[cat]||[];
+            const img=items[0]?`<img src="${imgUrl(items[0])}" alt="" style="width:100%;aspect-ratio:2/3;object-fit:cover;display:block"/>`:`<div style="aspect-ratio:2/3;background:var(--cd);display:flex;align-items:center;justify-content:center"><span style="color:var(--bl);font-size:9px;font-family:Montserrat,sans-serif;letter-spacing:1px;text-transform:uppercase;text-align:center;padding:8px">No image yet</span></div>`;
             return`<div onclick="show('${cat}')" style="cursor:pointer">${img}<div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bd);font-family:Montserrat,sans-serif;padding:6px 2px;text-align:center">${CNAMES[cat]}</div><div style="font-size:9px;color:var(--gold);font-family:Montserrat,sans-serif;text-align:center">${items.length} styles → click to manage</div></div>`;
           }).join('')}
         </div>
@@ -358,6 +355,7 @@ function hf(e,key){
   };r.readAsDataURL(f);
   if(key==='hero'){const btn=document.getElementById('ab-hero');if(btn)btn.disabled=false;}
 }
+
 function ck(key){
   const n=document.getElementById('n-'+key)?.value.trim();
   const btn=document.getElementById('ab-'+key);
@@ -372,11 +370,15 @@ async function upload(key){
   const btn=document.getElementById('ab-'+key);const ul=document.getElementById('ul-'+key);
   if(btn)btn.disabled=true;if(ul)ul.style.display='flex';
   try{
+    // Upload to Cloudinary
     const fd=new FormData();
-    fd.append('file',file);fd.append('upload_preset',UP);fd.append('folder','btc/'+key);
+    fd.append('file',file);
+    fd.append('upload_preset',UP);
     const res=await fetch(`https://api.cloudinary.com/v1_1/${CN}/image/upload`,{method:'POST',body:fd});
-    if(!res.ok)throw new Error();
+    if(!res.ok){const err=await res.json();throw new Error(err.error?.message||'Cloudinary upload failed');}
     const data=await res.json();
+
+    // Build item
     if(!DB[key])DB[key]=[];
     const newItem={publicId:data.public_id,url:data.secure_url,name:name||'Image '+(DB[key].length+1),isNew:true};
     if(key==='hero'){
@@ -387,9 +389,15 @@ async function upload(key){
       newItem.name=newItem.title||'Slide '+(DB[key].length+1);
     }
     DB[key].push(newItem);
-    await saveData();
+
+    // Save to Supabase
+    await saveKey(key);
+
+    // Reset form
     pf[key]=null;if(nameEl)nameEl.value='';
     const pr=document.getElementById('pr-'+key);if(pr)pr.style.display='none';
+
+    // Update UI
     const g=document.getElementById('g-'+key);
     if(key==='hero'){if(g)g.innerHTML=rHeroItems(DB.hero);}
     else if(key==='cultural'||key==='about'){if(g)g.innerHTML=rSimple(key,DB[key]);}
@@ -398,14 +406,16 @@ async function upload(key){
     renderOv();
     if(key==='cultural'&&DB.cultural.length>=2)renderCultural();
     if(key==='about'&&DB.about.length>=1)renderAbout();
-  }catch(err){toast('Upload failed. Please try again.');if(btn)btn.disabled=false;}
-  finally{if(ul)ul.style.display='none';}
+  }catch(err){
+    toast('Upload failed: '+err.message);
+    if(btn)btn.disabled=false;
+  }finally{if(ul)ul.style.display='none';}
 }
 
 async function rm(key,i){
   if(!confirm('Remove "'+(DB[key][i]?.name||'this item')+'" ?'))return;
   DB[key].splice(i,1);
-  await saveData();
+  await saveKey(key);
   const g=document.getElementById('g-'+key);
   if(key==='hero'){if(g)g.innerHTML=rHeroItems(DB.hero);}
   else if(key==='cultural'||key==='about'){if(g)g.innerHTML=rSimple(key,DB[key]);}
@@ -416,9 +426,9 @@ async function rm(key,i){
   if(key==='about')renderAbout();
 }
 
-function toggleNew(catId,i){
+async function toggleNew(catId,i){
   DB[catId][i].isNew=!DB[catId][i].isNew;
-  saveData();
+  await saveKey(catId);
   const g=document.getElementById('g-'+catId);if(g)g.innerHTML=rCatItems(catId,DB[catId]);
 }
 </script>
