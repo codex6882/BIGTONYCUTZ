@@ -65,9 +65,7 @@ nav{background:var(--bd);position:sticky;top:0;z-index:100;border-bottom:1px sol
 .hero-empty p{color:rgba(255,255,255,0.3);font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-.section{padding:80px 28px}
-.section-cream{background:var(--cr)}
-.section-white{background:var(--ow)}
+.section{padding:80px 28px}.section-cream{background:var(--cr)}.section-white{background:var(--ow)}
 .container{max-width:1200px;margin:0 auto}
 .sec-eye{color:var(--gold);font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:10px;display:block}
 .sec-title{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,44px);font-weight:700;color:var(--bd);line-height:1.15;margin-bottom:8px}
@@ -180,80 +178,48 @@ footer{background:var(--bd);padding:60px 28px 24px;border-top:1px solid rgba(201
 .back-top{position:fixed;bottom:96px;right:28px;z-index:400;width:38px;height:38px;background:var(--bd);border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 0.3s;color:var(--gold);font-size:14px;text-decoration:none}
 .back-top.show{opacity:1}
 .back-top:hover{background:var(--gold);color:var(--bd)}
-@media(max-width:768px){
-  .nav-main,.cat-section,.about,.cultural,.testimonials,.newsletter,.section{padding-left:18px;padding-right:18px}
-  .tagline-bar p{font-size:12px}
-  .features{padding:44px 18px}
-  footer{padding:48px 18px 22px}
-  .footer-top{gap:28px}
-}
+@media(max-width:768px){.nav-main,.cat-section,.about,.cultural,.testimonials,.newsletter,.section{padding-left:18px;padding-right:18px}.tagline-bar p{font-size:12px}.features{padding:44px 18px}footer{padding:48px 18px 22px}.footer-top{gap:28px}}
 </style>
 </head>
 <body>
-<div class="loader" id="loader">
-  <div class="logo-btc">BTC</div>
-  <div class="logo-sub">BigTonyCuts</div>
-  <div class="loader-line"></div>
-</div>
+<div class="loader" id="loader"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div><div class="loader-line"></div></div>
 <div class="tagline-bar"><p>Tell us what you need. We bring it to life.</p></div>
-<div class="announce-bar">
-  <div class="announce-track">
-    <span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
-    <span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
-  </div>
-</div>
+<div class="announce-bar"><div class="announce-track">
+<span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
+<span class="announce-text">FREE DELIVERY IN PORT HARCOURT <span class="sep">✦</span> NATIONWIDE SHIPPING AVAILABLE <span class="sep">✦</span> ORDER VIA WHATSAPP <span class="sep">✦</span> 100% NIGERIAN MADE <span class="sep">✦</span> PREMIUM MENSWEAR <span class="sep">✦</span> WHERE CULTURE MEETS CLASS <span class="sep">✦</span></span>
+</div></div>
 <nav>
-  <div class="nav-main">
-    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-    <a href="#" class="btc-logo"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div></a>
-    <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="nav-wa-btn">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Order Now
-    </a>
-  </div>
-  <div class="cat-nav"><div class="cat-nav-inner">
-    <a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a>
-    <a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a>
-    <a href="#button-shirts">Button Shirts</a>
-  </div></div>
+<div class="nav-main">
+<button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+<a href="#" class="btc-logo"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div></a>
+<a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="nav-wa-btn">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+Order Now</a>
+</div>
+<div class="cat-nav"><div class="cat-nav-inner">
+<a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a>
+<a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a><a href="#button-shirts">Button Shirts</a>
+</div></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <div class="mob-top">
-    <div class="logo-btc" style="font-size:22px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:800;letter-spacing:4px">BTC</div>
-    <button class="mob-close" onclick="toggleMenu()">✕</button>
-  </div>
-  <a href="#suits" onclick="toggleMenu()">Suits</a>
-  <a href="#agbada" onclick="toggleMenu()">Agbada</a>
-  <a href="#senator" onclick="toggleMenu()">Senator</a>
-  <a href="#dashiki" onclick="toggleMenu()">Dashiki</a>
-  <a href="#kaftan" onclick="toggleMenu()">Kaftan</a>
-  <a href="#etibo" onclick="toggleMenu()">Etibo</a>
-  <a href="#button-shirts" onclick="toggleMenu()">Button Shirts</a>
-  <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" onclick="toggleMenu()" style="color:var(--gold);margin-top:14px">Order on WhatsApp →</a>
+<div class="mob-top"><div class="logo-btc" style="font-size:22px;color:var(--gold);font-family:'Playfair Display',serif;font-weight:800;letter-spacing:4px">BTC</div><button class="mob-close" onclick="toggleMenu()">✕</button></div>
+<a href="#suits" onclick="toggleMenu()">Suits</a><a href="#agbada" onclick="toggleMenu()">Agbada</a><a href="#senator" onclick="toggleMenu()">Senator</a>
+<a href="#dashiki" onclick="toggleMenu()">Dashiki</a><a href="#kaftan" onclick="toggleMenu()">Kaftan</a><a href="#etibo" onclick="toggleMenu()">Etibo</a>
+<a href="#button-shirts" onclick="toggleMenu()">Button Shirts</a>
+<a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" onclick="toggleMenu()" style="color:var(--gold);margin-top:14px">Order on WhatsApp →</a>
 </div>
 <section class="hero" id="hero"><div id="heroSlides"></div><div class="slide-dots" id="heroDots"></div></section>
 <section class="section section-white fade-in" id="catalogue">
-  <div class="container">
-    <div class="find-header">
-      <span class="sec-eye">Shop by Category</span>
-      <h2 class="sec-title">Find The Perfect <em>Piece</em></h2>
-      <p class="sec-sub" style="margin-top:6px;text-align:center">Every occasion. Every style. Crafted for the African king.</p>
-    </div>
-  </div>
-  <div class="cat-tiles" id="catTiles"></div>
+<div class="container"><div class="find-header"><span class="sec-eye">Shop by Category</span><h2 class="sec-title">Find The Perfect <em>Piece</em></h2><p class="sec-sub" style="margin-top:6px;text-align:center">Every occasion. Every style. Crafted for the African king.</p></div></div>
+<div class="cat-tiles" id="catTiles"></div>
 </section>
 <section class="cat-section fade-in" id="suits"><div class="cat-head"><span class="eyebrow">The Power Collection</span><h2>Suits &amp; <em>Power Wear</em></h2></div><div class="product-grid" id="suits-grid"></div></section>
 <section class="cat-section fade-in" id="agbada"><div class="cat-head"><span class="eyebrow">Royal Heritage</span><h2>Agbada <em>Collection</em></h2></div><div class="product-grid" id="agbada-grid"></div></section>
 <section class="cultural fade-in">
-  <div class="cultural-inner">
-    <div class="cultural-text">
-      <span class="eyebrow">The Cultural Edit</span>
-      <h2>Agbada.<br><em>Redefined.</em></h2>
-      <p>Nigerian heritage. Modern elegance. Unapologetically you. For the king who knows where he comes from.</p>
-      <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20the%20Cultural%20Edit." target="_blank" class="slide-btn" style="display:inline-block">Enquire Now</a>
-    </div>
-    <div class="cultural-imgs" id="culturalImgs"></div>
-  </div>
+<div class="cultural-inner">
+<div class="cultural-text"><span class="eyebrow">The Cultural Edit</span><h2>Agbada.<br><em>Redefined.</em></h2><p>Nigerian heritage. Modern elegance. Unapologetically you. For the king who knows where he comes from.</p><a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20the%20Cultural%20Edit." target="_blank" class="slide-btn" style="display:inline-block">Enquire Now</a></div>
+<div class="cultural-imgs" id="culturalImgs"></div>
+</div>
 </section>
 <section class="cat-section fade-in" id="senator"><div class="cat-head"><span class="eyebrow">The Statesman Collection</span><h2>Senator <em>Styles</em></h2></div><div class="product-grid" id="senator-grid"></div></section>
 <section class="cat-section fade-in" id="dashiki"><div class="cat-head"><span class="eyebrow">Bold Cultural Prints</span><h2>Dashiki <em>Collection</em></h2></div><div class="product-grid" id="dashiki-grid"></div></section>
@@ -261,133 +227,89 @@ footer{background:var(--bd);padding:60px 28px 24px;border-top:1px solid rgba(201
 <section class="cat-section fade-in" id="etibo"><div class="cat-head"><span class="eyebrow">Rivers State Heritage</span><h2>Etibo <em>Collection</em></h2></div><div class="product-grid" id="etibo-grid"></div></section>
 <section class="cat-section fade-in" id="button-shirts"><div class="cat-head"><span class="eyebrow">Nigerian Print &amp; Pattern</span><h2>Button <em>Shirts</em></h2></div><div class="product-grid" id="button-shirts-grid"></div></section>
 <section class="about fade-in">
-  <div class="about-inner">
-    <div class="about-text">
-      <span class="eyebrow">About BigTonyCuts</span>
-      <h2>Crafted For You.<br>Delivered With Excellence.</h2>
-      <p>At BigTonyCuts, you are in control. Tell us exactly what you want — whether it's a grand Agbada for your ceremony, a sharp Senator for the boardroom, or a bold Dashiki for the culture — and our expert designers bring your vision to life.</p>
-      <p>We don't just make clothes. We craft experiences. Every piece is made with precision, delivered on time, and finished to the highest standard — because a king deserves nothing less.</p>
-      <div class="pillars">
-        <div class="pillar"><span class="pillar-icon">⏱️</span><div class="pillar-title">Perfect Timing</div><p class="pillar-desc">Your outfit ready when you need it — no delays, no excuses</p></div>
-        <div class="pillar"><span class="pillar-icon">✦</span><div class="pillar-title">Unmatched Quality</div><p class="pillar-desc">Premium fabrics, expert craftsmanship, royal finish</p></div>
-        <div class="pillar"><span class="pillar-icon">⚡</span><div class="pillar-title">Fast Turnaround</div><p class="pillar-desc">Quick production without ever compromising excellence</p></div>
-        <div class="pillar"><span class="pillar-icon">🚚</span><div class="pillar-title">Smooth Delivery</div><p class="pillar-desc">Safe, fast delivery to your door across Nigeria</p></div>
-      </div>
-    </div>
-    <div class="about-img" id="aboutImg"></div>
-  </div>
+<div class="about-inner">
+<div class="about-text"><span class="eyebrow">About BigTonyCuts</span><h2>Crafted For You.<br>Delivered With Excellence.</h2>
+<p>At BigTonyCuts, you are in control. Tell us exactly what you want — whether it's a grand Agbada for your ceremony, a sharp Senator for the boardroom, or a bold Dashiki for the culture — and our expert designers bring your vision to life.</p>
+<p>We don't just make clothes. We craft experiences. Every piece is made with precision, delivered on time, and finished to the highest standard — because a king deserves nothing less.</p>
+<div class="pillars">
+<div class="pillar"><span class="pillar-icon">⏱️</span><div class="pillar-title">Perfect Timing</div><p class="pillar-desc">Your outfit ready when you need it — no delays, no excuses</p></div>
+<div class="pillar"><span class="pillar-icon">✦</span><div class="pillar-title">Unmatched Quality</div><p class="pillar-desc">Premium fabrics, expert craftsmanship, royal finish</p></div>
+<div class="pillar"><span class="pillar-icon">⚡</span><div class="pillar-title">Fast Turnaround</div><p class="pillar-desc">Quick production without ever compromising excellence</p></div>
+<div class="pillar"><span class="pillar-icon">🚚</span><div class="pillar-title">Smooth Delivery</div><p class="pillar-desc">Safe, fast delivery to your door across Nigeria</p></div>
+</div></div>
+<div class="about-img" id="aboutImg"></div>
+</div>
 </section>
 <section class="features fade-in">
-  <div class="features-inner">
-    <div><div class="feat-icon">🚚</div><div class="feat-title">Nationwide Shipping</div><p class="feat-desc">24–48hrs locally in Port Harcourt. Fast delivery nationwide across Nigeria.</p></div>
-    <div><div class="feat-icon">✦</div><div class="feat-title">Premium Quality</div><p class="feat-desc">Crafted with care, culture and the finest Nigerian fabrics. Every piece is royal.</p></div>
-    <div><div class="feat-icon">🔄</div><div class="feat-title">Easy Returns</div><p class="feat-desc">Stress-free exchange within 5 days of receiving your order.</p></div>
-  </div>
+<div class="features-inner">
+<div><div class="feat-icon">🚚</div><div class="feat-title">Nationwide Shipping</div><p class="feat-desc">24–48hrs locally in Port Harcourt. Fast delivery nationwide across Nigeria.</p></div>
+<div><div class="feat-icon">✦</div><div class="feat-title">Premium Quality</div><p class="feat-desc">Crafted with care, culture and the finest Nigerian fabrics. Every piece is royal.</p></div>
+<div><div class="feat-icon">🔄</div><div class="feat-title">Easy Returns</div><p class="feat-desc">Stress-free exchange within 5 days of receiving your order.</p></div>
+</div>
 </section>
 <section class="testimonials fade-in">
-  <div class="testi-top">
-    <span class="sec-eye" style="display:block;margin-bottom:10px">Customer Reviews</span>
-    <h2 class="sec-title sec-title-white" style="text-align:center">Customers Are Saying</h2>
-    <div class="testi-rating">★★★★★</div>
-    <div class="testi-verified">✓ Verified Reviews — 5.0 Rating</div>
-  </div>
-  <div class="testi-grid">
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"BigTonyCuts delivered exactly what I wanted for my wedding. The Agbada was absolutely stunning — every guest was asking where I got it. Will definitely order again!"</p><div class="testi-author">Chukwuemeka O.</div><div class="testi-loc">Lagos, Nigeria</div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Ordered a Senator style for my dad's birthday. The quality was exceptional. Fast delivery to Abuja and the packaging was premium. BigTonyCuts is the real deal!"</p><div class="testi-author">Babatunde A.</div><div class="testi-loc">Abuja, Nigeria</div></div>
-    <div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Finding authentic Nigerian menswear was always a challenge. BigTonyCuts ships nationwide and their Kaftan collection is unmatched. Truly regal craftsmanship!"</p><div class="testi-author">Ibrahim M.</div><div class="testi-loc">Kano, Nigeria</div></div>
-  </div>
+<div class="testi-top"><span class="sec-eye" style="display:block;margin-bottom:10px">Customer Reviews</span><h2 class="sec-title sec-title-white" style="text-align:center">Customers Are Saying</h2><div class="testi-rating">★★★★★</div><div class="testi-verified">✓ Verified Reviews — 5.0 Rating</div></div>
+<div class="testi-grid">
+<div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"BigTonyCuts delivered exactly what I wanted for my wedding. The Agbada was absolutely stunning — every guest was asking where I got it. Will definitely order again!"</p><div class="testi-author">Chukwuemeka O.</div><div class="testi-loc">Lagos, Nigeria</div></div>
+<div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Ordered a Senator style for my dad's birthday. The quality was exceptional. Fast delivery to Abuja and the packaging was premium. BigTonyCuts is the real deal!"</p><div class="testi-author">Babatunde A.</div><div class="testi-loc">Abuja, Nigeria</div></div>
+<div class="testi-card"><div class="testi-q">"</div><p class="testi-text">"Finding authentic Nigerian menswear was always a challenge. BigTonyCuts ships nationwide and their Kaftan collection is unmatched. Truly regal craftsmanship!"</p><div class="testi-author">Ibrahim M.</div><div class="testi-loc">Kano, Nigeria</div></div>
+</div>
 </section>
-<section class="newsletter fade-in">
-  <div class="nl-inner">
-    <span class="sec-eye" style="display:block;margin-bottom:10px">Stay Connected</span>
-    <h2>Join The Royal Circle</h2>
-    <p>Be first to see new collections and exclusive drops.</p>
-    <div class="nl-form"><input type="email" placeholder="Enter your email address"/><button>→</button></div>
-  </div>
-</section>
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div>
-        <p class="footer-tagline">"Where Culture Meets Class.<br>Dressed Like Royalty."</p>
-        <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="footer-wa">
-          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Order on WhatsApp
-        </a>
-      </div>
-      <div class="footer-col"><h4>Information</h4><a href="#">Contact Us</a><a href="#">Shipping Policy</a><a href="#">Refund &amp; Return</a><a href="#">Terms of Service</a><a href="#">About Us</a></div>
-      <div class="footer-col"><h4>Collections</h4><a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a><a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a><a href="#button-shirts">Button Shirts</a></div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 BigTonyCuts — All Rights Reserved</p><p>Port Harcourt, Nigeria 🇳🇬</p></div>
-  </div>
-</footer>
+<section class="newsletter fade-in"><div class="nl-inner"><span class="sec-eye" style="display:block;margin-bottom:10px">Stay Connected</span><h2>Join The Royal Circle</h2><p>Be first to see new collections and exclusive drops.</p><div class="nl-form"><input type="email" placeholder="Enter your email address"/><button>→</button></div></div></section>
+<footer><div class="footer-inner">
+<div class="footer-top">
+<div class="footer-brand"><div class="logo-btc">BTC</div><div class="logo-sub">BigTonyCuts</div><p class="footer-tagline">"Where Culture Meets Class.<br>Dressed Like Royalty."</p>
+<a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="footer-wa">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp</a></div>
+<div class="footer-col"><h4>Information</h4><a href="#">Contact Us</a><a href="#">Shipping Policy</a><a href="#">Refund &amp; Return</a><a href="#">Terms of Service</a><a href="#">About Us</a></div>
+<div class="footer-col"><h4>Collections</h4><a href="#suits">Suits</a><a href="#agbada">Agbada</a><a href="#senator">Senator</a><a href="#dashiki">Dashiki</a><a href="#kaftan">Kaftan</a><a href="#etibo">Etibo</a><a href="#button-shirts">Button Shirts</a></div>
+</div>
+<div class="footer-bottom"><p>© 2026 BigTonyCuts — All Rights Reserved</p><p>Port Harcourt, Nigeria 🇳🇬</p></div>
+</div></footer>
 <a href="https://wa.me/2348119721371?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20one%20of%20your%20styles." target="_blank" class="float-wa">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 <a href="#" class="back-top" id="backTop">↑</a>
 <script>
-// GitHub config - data stored online so all devices see same content
-const GH_TOKEN=window.ENV_GH_TOKEN||'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';
-const GH_REPO='codex6882/BIGTONYCUTZ';
-const GH_FILE='btc-data.json';
+const SUPA_URL='https://efribdzucyceppoffcna.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVmcmliZHp1Y3ljZXBwb2ZmY25hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxMjA0OTMsImV4cCI6MjA5NDY5NjQ5M30.a_uiHNRXXkhkVsxTH2aL7iRl5Tcv5-Y8ttEsfcYze2M';
 const CN='dk8jx39ti';
 const CATS=['suits','agbada','senator','dashiki','kaftan','etibo','button-shirts'];
 const CAT_LABELS={suits:'Suits',agbada:'Agbada',senator:'Senator',dashiki:'Dashiki',kaftan:'Kaftan',etibo:'Etibo','button-shirts':'Button Shirts'};
 const WA='2348119721371';
-
 let DB={hero:[],suits:[],agbada:[],senator:[],dashiki:[],kaftan:[],etibo:[],'button-shirts':[],cultural:[],about:[]};
 
-function imgUrl(item){
-  if(!item)return'';
-  return item.publicId?`https://res.cloudinary.com/${CN}/image/upload/q_auto,f_auto,c_fill,ar_3:4/${item.publicId}`:item.url||'';
-}
+function imgUrl(item){return item&&item.publicId?`https://res.cloudinary.com/${CN}/image/upload/q_auto,f_auto,c_fill,ar_3:4/${item.publicId}`:item&&item.url?item.url:'';}
 function waLink(cat,name){return`https://wa.me/${WA}?text=Hello%20BigTonyCuts%2C%20I%27m%20interested%20in%20your%20${encodeURIComponent(CAT_LABELS[cat]||cat)}%20style%20-%20${encodeURIComponent(name||'')}.%20Please%20share%20details.`;}
 
 async function loadData(){
   try{
-    const r=await fetch(`https://raw.githubusercontent.com/${GH_REPO}/main/${GH_FILE}?t=${Date.now()}`);
-    if(r.ok){const d=await r.json();DB={...DB,...d};}
+    const r=await fetch(`${SUPA_URL}/rest/v1/btc_data?select=key,value`,{headers:{'apikey':SUPA_KEY,'Authorization':`Bearer ${SUPA_KEY}`}});
+    if(r.ok){
+      const rows=await r.json();
+      rows.forEach(row=>{DB[row.key]=row.value||[];});
+    }
   }catch(e){}
   renderAll();
 }
 
-// Loader
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),700));
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>document.getElementById('backTop').classList.toggle('show',window.scrollY>400));
 
-// Hero
 let heroIdx=0;
 function renderHero(){
   const slides=DB.hero||[];
   const container=document.getElementById('heroSlides');
   const dots=document.getElementById('heroDots');
-  if(!slides.length){
-    container.innerHTML='<div class="slide active"><div class="hero-empty"><p>Add hero images from admin dashboard</p></div></div>';
-    dots.innerHTML='';return;
-  }
-  container.innerHTML=slides.map((s,i)=>`
-    <div class="slide ${i===0?'active':''}" id="hs${i}">
-      <img class="slide-bg" src="${imgUrl(s)}" alt="${s.title||''}"/>
-      <div class="slide-overlay"></div>
-      <div class="slide-content">
-        <span class="slide-label">${s.label||'The BigTonyCuts Collection'}</span>
-        <h1 class="slide-title">${s.title||'Where Culture Meets Class.'}</h1>
-        <p class="slide-sub">${s.sub||'Dressed Like Royalty. Unapologetically Nigerian.'}</p>
-        <a href="#catalogue" class="slide-btn">${s.btn||'Explore the Catalogue'}</a>
-      </div>
-    </div>`).join('');
+  if(!slides.length){container.innerHTML='<div class="slide active"><div class="hero-empty"><p>Add hero images from admin dashboard</p></div></div>';dots.innerHTML='';return;}
+  container.innerHTML=slides.map((s,i)=>`<div class="slide ${i===0?'active':''}" id="hs${i}"><img class="slide-bg" src="${imgUrl(s)}" alt=""/><div class="slide-overlay"></div><div class="slide-content"><span class="slide-label">${s.label||'The BigTonyCuts Collection'}</span><h1 class="slide-title">${s.title||'Where Culture Meets Class.'}</h1><p class="slide-sub">${s.sub||'Dressed Like Royalty. Unapologetically Nigerian.'}</p><a href="#catalogue" class="slide-btn">${s.btn||'Explore the Catalogue'}</a></div></div>`).join('');
   dots.innerHTML=slides.map((_,i)=>`<div class="dot ${i===0?'active':''}" onclick="goSlide(${i})"></div>`).join('');
   heroIdx=0;
 }
-function goSlide(n){
-  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
-  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));
-  heroIdx=n;
-}
+function goSlide(n){document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===n));heroIdx=n;}
 setInterval(()=>{const sl=DB.hero||[];if(sl.length>1)goSlide((heroIdx+1)%sl.length);},5000);
 
 function renderTiles(){
@@ -400,16 +322,14 @@ function renderTiles(){
 }
 
 function renderCultural(){
-  const items=DB.cultural||[];
-  const c=document.getElementById('culturalImgs');
+  const items=DB.cultural||[];const c=document.getElementById('culturalImgs');
   if(!items.length){c.innerHTML='<div class="cultural-img-empty"><span>Add image</span></div><div class="cultural-img-empty"><span>Add image</span></div>';return;}
   c.innerHTML=items.slice(0,2).map(item=>`<img src="${imgUrl(item)}" alt="" loading="lazy"/>`).join('');
   if(items.length<2)c.innerHTML+='<div class="cultural-img-empty"><span>Add image</span></div>';
 }
 
 function renderAbout(){
-  const items=DB.about||[];
-  const c=document.getElementById('aboutImg');
+  const items=DB.about||[];const c=document.getElementById('aboutImg');
   if(!items.length){c.innerHTML='<div class="about-img-empty"><span>Add image from admin</span></div>';return;}
   c.innerHTML=`<img src="${imgUrl(items[0])}" alt="" loading="lazy"/>`;
 }
@@ -419,15 +339,7 @@ function renderCatalogues(){
     const grid=document.getElementById(cat+'-grid');if(!grid)return;
     const items=DB[cat]||[];
     if(!items.length){grid.innerHTML=`<div class="empty-cat"><p>New styles coming soon</p><span>Add styles from the admin dashboard</span></div>`;return;}
-    grid.innerHTML=items.map(item=>`
-      <a class="product-card" href="${waLink(cat,item.name)}" target="_blank">
-        <div class="product-img-wrap">
-          <img src="${imgUrl(item)}" alt="${item.name}" loading="lazy"/>
-          ${item.isNew?'<span class="new-tag">New</span>':''}
-        </div>
-        <span class="product-name">${item.name}</span>
-        <span class="product-note">Tap to enquire</span>
-      </a>`).join('');
+    grid.innerHTML=items.map(item=>`<a class="product-card" href="${waLink(cat,item.name)}" target="_blank"><div class="product-img-wrap"><img src="${imgUrl(item)}" alt="${item.name}" loading="lazy"/>${item.isNew?'<span class="new-tag">New</span>':''}</div><span class="product-name">${item.name}</span><span class="product-note">Tap to enquire</span></a>`).join('');
   });
 }
 
